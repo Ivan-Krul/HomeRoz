@@ -2,9 +2,12 @@
 //
 
 #include <iostream>
+#include "date.h"
 
 int main()
 {
+    Date date;
+    date.Test();
     std::cout << "Hello World!\n";
 }
 
