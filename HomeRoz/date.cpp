@@ -1,24 +1,24 @@
 #include "date.h"
 
-Date::Date(Month month, unsigned short day)
+Date::Date(Month month, short day)
 {
-	this->month = month;
-	this->day = day;
+	mMonth = month;
+	mDay = day;
 }
-Date::Date(unsigned short month, unsigned short day)
+Date::Date(short month, short day)
 {
-	this->month = static_cast<Month>(month);
-	this->day = day;
+	mMonth = static_cast<Month>(month);
+	mDay = day;
 }
 short Date::ConvertDateToDays()
 {
 	short days = 0;
-	for (char month_i = static_cast<char>(month) - 1; month_i >= 0; month_i--)
+	for (char month_i = static_cast<char>(mMonth) - 1; month_i >= 0; month_i--)
 		days += ConvertMonthDays(static_cast<Month>(month_i));
-	days += day;
+	days += mDay;
 	return days;
 }
-unsigned short Date::ConvertMonthDays(Month month)
+short Date::ConvertMonthDays(Month month)
 {
 	switch (month)
 	{
@@ -39,7 +39,7 @@ unsigned short Date::ConvertMonthDays(Month month)
 }
 std::string Date::ConvertMonthToString()
 {
-	switch (month)
+	switch (mMonth)
 	{
 		case Date::Month::january:		return "Jan";
 		case Date::Month::february:		return "Feb";
@@ -56,31 +56,68 @@ std::string Date::ConvertMonthToString()
 		default:						return "Def";
 	}
 }
+short Date::getDay()
+{
+	return mDay;
+}
+Date::Month Date::getMonth()
+{
+	return mMonth;
+}
+void Date::setDay(short day)
+{
+	if (mDay >= ConvertMonthDays(mMonth))
+		day = ConvertMonthDays(mMonth) - 1;
+	else if (mDay < 0)
+		mDay = 0;
+	else
+		mDay = day;	
+}
+void Date::setMonth(Month month)
+{
+	mMonth = month;
+}
+void Date::setMonth(short month)
+{
+	if (month >= 12)
+		mMonth = Month::december;
+	else if (month < 0)
+		mMonth = Month::january;
+	else
+		mMonth = static_cast<Month>(month);
+}
 void Date::Test()
 {
 	mTestConvertDateToDays0();
 	mTestConvertDateToDays1();
 }
+void Date::SetCurrentTime()
+{
+	time_t now = time(0);
+	tm* gmtm = gmtime(&now);
+	mMonth = static_cast<Month>(gmtm->tm_mon);
+	mDay = gmtm->tm_mday;
+}
 void Date::mTestConvertDateToDays0()
 {
 	short days;
 	Date date;
-	date.month = Month::march;
-	date.day = 5;
+	date.mMonth = Month::march;
+	date.mDay = 5;
 	days = ConvertMonthDays(Month::february);
 	days += ConvertMonthDays(Month::january);
 	days += 5;
 	assert(date.ConvertDateToDays() == days);
 #ifdef IOSTREAM
-	std::cout << __FUNCTION__ << ": (" << date.day << ' ' << date.ConvertMonthToString() << ") done\n";
+	std::cout << __FUNCTION__ << ": (" << date.mDay << ' ' << date.ConvertMonthToString() << ") done\n";
 #endif // IOSTREAM
 }
 void Date::mTestConvertDateToDays1()
 {
 	short days;
 	Date date;
-	date.month = Month::december;
-	date.day = 25;
+	date.mMonth = Month::december;
+	date.mDay = 25;
 	days = ConvertMonthDays(Month::november);
 	days += ConvertMonthDays(Month::october);
 	days += ConvertMonthDays(Month::september);
@@ -95,7 +132,7 @@ void Date::mTestConvertDateToDays1()
 	days += 25;
 	assert(date.ConvertDateToDays() == days);
 #ifdef IOSTREAM
-	std::cout << __FUNCTION__ << ": (" << date.day << ' ' << date.ConvertMonthToString() << ") done\n";
+	std::cout << __FUNCTION__ << ": (" << date.mDay << ' ' << date.ConvertMonthToString() << ") done\n";
 #endif // IOSTREAM
 }
 

@@ -1,28 +1,34 @@
 #pragma once
 #include <cassert>
+#include <chrono>
 #include <string>
-#ifndef IOSTREAM
+#ifdef IOSTREAM
 #define IOSTREAM
 #include <iostream>
 #endif // !IOSTREAM
-
 class Date
 {
 public:
 	enum class Month;
-	Date(Month month, unsigned short day);
-	Date(unsigned short month, unsigned short day);
-	Date() = default;
-	Month month;
-	unsigned short day : 5;
-	short ConvertDateToDays();
-	unsigned short ConvertMonthDays(Month month);
-	std::string ConvertMonthToString();
-	void Test();
 private:
+	Month mMonth;
+	unsigned short mDay;
 	void mTestConvertDateToDays0();
 	void mTestConvertDateToDays1();
 public:
+	Date(Month month, short day);
+	Date(short month, short day);
+	Date() = default;
+	short ConvertDateToDays();
+	short ConvertMonthDays(Month month);
+	std::string ConvertMonthToString();
+	short getDay();
+	Month getMonth() {}
+	void setDay(short day);
+	void setMonth(Month month);
+	void setMonth(short month);
+	void Test();
+	void SetCurrentTime();
 	enum class Month
 	{
 		january = 0,
@@ -39,4 +45,3 @@ public:
 		december
 	};
 };
-
