@@ -1,8 +1,9 @@
 #pragma once
 #include "week.h"
+#include "iformattostring.h"
 #include <string>
 #include <vector>
-class Lesson
+class Lesson : public IFormatToString
 {
 	std::string mName;
 	std::string mLink;
@@ -16,5 +17,6 @@ public:
 	void getLink(std::string link);
 	void PushWeek(Week week);
 	void PopWeek(std::vector<Week>::iterator iter);
+	std::string FormatToString();
 };
 

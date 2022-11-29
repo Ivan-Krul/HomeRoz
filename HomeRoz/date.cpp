@@ -98,6 +98,14 @@ void Date::SetCurrentTime()
 	mMonth = static_cast<Month>(gmtm->tm_mon);
 	mDay = gmtm->tm_mday;
 }
+std::string Date::FormatToString()
+{
+	std::string string;
+	string = std::to_string(mDay);
+	string += ' ';
+	string += ConvertMonthToString();
+	return string;
+}
 void Date::mTestConvertDateToDays0()
 {
 	short days;

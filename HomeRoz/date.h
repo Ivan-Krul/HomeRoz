@@ -2,11 +2,12 @@
 #include <cassert>
 #include <chrono>
 #include <string>
+#include "iformattostring.h"
 #ifdef IOSTREAM
 #define IOSTREAM
 #include <iostream>
 #endif // !IOSTREAM
-class Date
+class Date : public IFormatToString
 {
 public:
 	enum class Month;
@@ -29,6 +30,7 @@ public:
 	void setMonth(short month);
 	void Test();
 	void SetCurrentTime();
+	std::string FormatToString();
 	enum class Month
 	{
 		january = 0,

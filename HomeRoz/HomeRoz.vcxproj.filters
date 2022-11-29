@@ -18,6 +18,12 @@
     <Filter Include="Source Files\Lesson">
       <UniqueIdentifier>{f3ae400a-8040-4b7b-8e6a-cce9dd4b3fa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Homework">
+      <UniqueIdentifier>{f3f8e1ac-2f22-4833-88d2-76660bf4c362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FormatToString">
+      <UniqueIdentifier>{ec2725a5-0ae7-4a39-9ffb-8ec318b28180}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,6 +35,9 @@
     <ClCompile Include="lesson.cpp">
       <Filter>Source Files\Lesson</Filter>
     </ClCompile>
+    <ClCompile Include="homework.cpp">
+      <Filter>Source Files\Homework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">
@@ -39,6 +48,12 @@
     </ClInclude>
     <ClInclude Include="lesson.h">
       <Filter>Source Files\Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="homework.h">
+      <Filter>Source Files\Homework</Filter>
+    </ClInclude>
+    <ClInclude Include="iformattostring.h">
+      <Filter>Source Files\FormatToString</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

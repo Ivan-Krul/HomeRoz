@@ -128,11 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="date.cpp" />
+    <ClCompile Include="homework.cpp" />
     <ClCompile Include="lesson.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
+    <ClInclude Include="homework.h" />
+    <ClInclude Include="iformattostring.h" />
     <ClInclude Include="lesson.h" />
     <ClInclude Include="week.h" />
   </ItemGroup>
