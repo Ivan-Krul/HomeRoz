@@ -1,8 +1,9 @@
 #pragma once
 #include "date.h"
 #include "lesson.h"
+#include "iformattostring.h"
 #include <string>
-class Homework
+class Homework : IFormatToString
 {
 	bool mDone;
 	Lesson* mpLesson;
@@ -15,8 +16,8 @@ public:
 	Lesson* getLesson();
 	Date getToDate();
 	Date getFromDate();
-	void setContex(std::string str);
-	void setLesson(Lesson* lesson);
+	void setContex(std::string context);
+	void setLesson(Lesson* pLesson);
 	void setToDate(Date toDate);
 	void setFromDate(Date fromDate);
 	void MarkDone();
