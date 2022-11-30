@@ -41,6 +41,13 @@ void Homework::MarkDone()
 }
 std::string Homework::FormatToString()
 {
-	/*	UNDONE	*/
-	return std::string();
+	std::string string;
+	string = mContext;
+	string += ' ';
+	string += mFromDate.FormatToString();
+	string += ' ';
+	string += mToDate.FormatToString();
+	string += ' ';
+	string += mDone ? "done" : "dont";
+	return string;
 }
