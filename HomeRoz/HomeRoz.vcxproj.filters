@@ -38,6 +38,9 @@
     <ClCompile Include="homework.cpp">
       <Filter>Source Files\Homework</Filter>
     </ClCompile>
+    <ClCompile Include="table.cpp">
+      <Filter>Source Files\Table</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="iformattostring.h">
       <Filter>Source Files\FormatToString</Filter>
+    </ClInclude>
+    <ClInclude Include="table.h">
+      <Filter>Source Files\Table</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
