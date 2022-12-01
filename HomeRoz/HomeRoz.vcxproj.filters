@@ -24,6 +24,9 @@
     <Filter Include="Source Files\FormatToString">
       <UniqueIdentifier>{ec2725a5-0ae7-4a39-9ffb-8ec318b28180}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Table\HomeworkSelect">
+      <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="table.cpp">
       <Filter>Source Files\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="homeworkselect.cpp">
+      <Filter>Source Files\Table\HomeworkSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,9 @@
     </ClInclude>
     <ClInclude Include="table.h">
       <Filter>Source Files\Table</Filter>
+    </ClInclude>
+    <ClInclude Include="homeworkselect.h">
+      <Filter>Source Files\Table\HomeworkSelect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

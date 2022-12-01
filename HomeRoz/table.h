@@ -14,8 +14,17 @@ private:
 	UserActions mCurrentAction = UserActions::nothing;
 	LineChoose mLineChoose;
 	std::list<Lesson>::iterator mIterLesson = mLessons.begin();
+private:
+	void mConNothing();
+	void mConMoveUp();
+	void mConMoveDown();
+	void mConMoveLeft();
+	void mConMoveRight();
+	void mConCreateLesson();
+	void mConCreateHomework();
 public:
-	/*  TODO  */
+	void SenseControl(UserActions action);
+	void Execute();
 public:
 	enum class LineChoose
 	{
@@ -39,7 +48,8 @@ public:
 		create_homework,
 		erase_lesson,
 		erase_homework,
+		select_homework,
 		save,
 		load
 	};
-};
+};     

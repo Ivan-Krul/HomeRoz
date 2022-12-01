@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="date.cpp" />
     <ClCompile Include="homework.cpp" />
+    <ClCompile Include="homeworkselect.cpp" />
     <ClCompile Include="lesson.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="table.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="date.h" />
     <ClInclude Include="homework.h" />
+    <ClInclude Include="homeworkselect.h" />
     <ClInclude Include="iformattostring.h" />
     <ClInclude Include="lesson.h" />
     <ClInclude Include="table.h" />
