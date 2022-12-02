@@ -6,9 +6,10 @@
 #include <string>
 class HomeworkSelect
 {
-	std::map<std::string, std::list<Homework>> mHomeworkList;
+	std::map<Lesson, std::list<Homework>> mHomeworkList;
 public:
-	auto getHomework(std::string nameLesson);
+	auto getHomeworkList(Lesson lesson);
+	std::list<Lesson> getLessonList();
 	void AddLesson(Lesson lesson);
 	void EraseLesson(Lesson lesson);
 	void AddHomework(Homework homework);

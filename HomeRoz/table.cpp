@@ -10,13 +10,15 @@ void Table::mConNothing()
 }
 void Table::mConMoveUp()
 {
-	if (mIterLesson != mLessons.begin())
+	auto list = mHomeworkSelect.getLessonList();
+	if (mIterLesson != list.begin())
 		mIterLesson--;
 	mConNothing();
 }
 void Table::mConMoveDown()
 {
-	if(mIterLesson != mLessons.end())
+	auto list = mHomeworkSelect.getLessonList();
+	if(mIterLesson != list.end())
 		mIterLesson++;
 	mConNothing();
 }
@@ -37,7 +39,7 @@ void Table::mConCreateLesson()
 	static Lesson sTemplateLesson;
 	sTemplateLesson.setName("New Lesson");
 	sTemplateLesson.PushWeek(WeekSetCurrentTime());
-	mLessons.push_back(sTemplateLesson);
+	mHomeworkSelect.AddLesson(sTemplateLesson);
 }
 void Table::mConCreateHomework()
 {
@@ -51,7 +53,7 @@ void Table::mConCreateHomework()
 		sTemplateHomework.setToDate(date_from);
 		sTemplateHomework.setLesson(&(*mIterLesson));
 	}
-	mHomeworks.push_back(sTemplateHomework);
+	mHomeworkSelect.AddHomework(sTemplateHomework);
 }
 void Table::Execute()
 {

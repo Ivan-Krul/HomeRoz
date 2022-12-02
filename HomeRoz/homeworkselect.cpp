@@ -1,32 +1,39 @@
 #include "homeworkselect.h"
-auto HomeworkSelect::getHomework(std::string nameLesson)
+auto HomeworkSelect::getHomeworkList(Lesson lesson)
 {
-	auto hwlist = mHomeworkList.find(nameLesson);
+	auto hwlist = mHomeworkList.find(lesson);
 	return hwlist->second;
+}
+std::list<Lesson> HomeworkSelect::getLessonList()
+{
+	std::list<Lesson> lessons;
+	for (auto lesson = mHomeworkList.begin(); lesson != mHomeworkList.end(); lesson++)
+		lessons.push_back(lesson->first);
+	return lessons;
 }
 void HomeworkSelect::AddLesson(Lesson lesson)
 {
-	mHomeworkList.insert({lesson.getName(), std::list<Homework>()});
+	mHomeworkList.insert({lesson, std::list<Homework>()});
 }
 void HomeworkSelect::EraseLesson(Lesson lesson)
 {
-	auto hwlist = mHomeworkList.find(lesson.getName());
+	auto hwlist = mHomeworkList.find(lesson);
 	mHomeworkList.erase(hwlist);
 }
 void HomeworkSelect::AddHomework(Homework homework)
 {
-	auto list = mHomeworkList.find(homework.getLesson()->getName());
+	auto list = mHomeworkList.find(*homework.getLesson());
 	list->second.push_back(homework);
 }
 void HomeworkSelect::EraseHomework(Homework homework)
 {
-		auto hwlist = mHomeworkList.find(homework.getLesson()->getName());
-		for (auto hw = hwlist->second.begin(); hw != hwlist->second.end(); hw++)
+	auto hwlist = mHomeworkList.find(*homework.getLesson());
+	for (auto hw = hwlist->second.begin(); hw != hwlist->second.end(); hw++)
+	{
+		if (hw->getContex() == homework.getContex())
 		{
-			if (*hw == homework)
-			{
-
-			}
+			hwlist->second.erase(hw);
+			return;
 		}
-		mHomeworkList.find(homework.getLesson()->getName())(homework);
+	}
 }

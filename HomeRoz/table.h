@@ -1,6 +1,7 @@
 #pragma once
 #include "homework.h"
 #include "lesson.h"
+#include "homeworkselect.h"
 #include <list>
 class Table
 {
@@ -8,12 +9,11 @@ public:
 	enum class UserActions;
 	enum class LineChoose;
 private:
-	std::list<Homework> mHomeworks;
-	std::list<Lesson> mLessons;
+	HomeworkSelect mHomeworkSelect;
 	std::string mInputString;
 	UserActions mCurrentAction = UserActions::nothing;
 	LineChoose mLineChoose;
-	std::list<Lesson>::iterator mIterLesson = mLessons.begin();
+	std::list<Lesson>::iterator mIterLesson = mHomeworkSelect.getLessonList().begin();
 private:
 	void mConNothing();
 	void mConMoveUp();
