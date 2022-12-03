@@ -9,10 +9,11 @@ class Lesson : public IFormatToString
 	std::string mLink;
 	std::vector<Week> mWeeks;
 public:
-	auto BeginWeeks();
-	auto EndWeeks();
-	auto getName();
-	auto getLink();
+	std::vector<Week>::iterator BeginWeeks();
+	std::vector<Week>::iterator EndWeeks();
+	size_t SizeWeek();
+	std::string getName();
+	std::string getLink();
 	void setName(std::string name);
 	void getLink(std::string link);
 	void PushWeek(Week week);

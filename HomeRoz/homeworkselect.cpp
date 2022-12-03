@@ -1,5 +1,5 @@
 #include "homeworkselect.h"
-auto HomeworkSelect::getHomeworkList(Lesson lesson)
+std::list<Homework> HomeworkSelect::getHomeworkList(Lesson lesson)
 {
 	auto hwlist = mHomeworkList.find(lesson);
 	return hwlist->second;

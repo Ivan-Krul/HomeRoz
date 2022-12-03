@@ -8,7 +8,7 @@ class HomeworkSelect
 {
 	std::map<Lesson, std::list<Homework>> mHomeworkList;
 public:
-	auto getHomeworkList(Lesson lesson);
+	std::list<Homework> getHomeworkList(Lesson lesson);
 	std::list<Lesson> getLessonList();
 	void AddLesson(Lesson lesson);
 	void EraseLesson(Lesson lesson);

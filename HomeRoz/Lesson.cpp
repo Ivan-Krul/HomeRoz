@@ -7,6 +7,10 @@ auto Lesson::EndWeeks()
 {
 	return mWeeks.end();
 }
+size_t Lesson::SizeWeek()
+{
+	return mWeeks.size();
+}
 auto Lesson::getName()
 {
 	return mName;

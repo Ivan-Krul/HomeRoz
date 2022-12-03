@@ -3,6 +3,7 @@
 #include "lesson.h"
 #include "homeworkselect.h"
 #include <list>
+#include <fstream>
 class Table
 {
 public:
@@ -14,6 +15,8 @@ private:
 	UserActions mCurrentAction = UserActions::nothing;
 	LineChoose mLineChoose;
 	std::list<Lesson>::iterator mIterLesson = mHomeworkSelect.getLessonList().begin();
+	std::list<Homework>::iterator mIterHomework;
+	bool mIsSelectHW = false;
 private:
 	void mConNothing();
 	void mConMoveUp();
@@ -22,6 +25,11 @@ private:
 	void mConMoveRight();
 	void mConCreateLesson();
 	void mConCreateHomework();
+	void mConSelectHomework();
+	void mConEraseLesson();
+	void mConEraseHomework();
+	void mConSave(std::string dir);
+	void mConLoad(std::string dir);
 public:
 	void SenseControl(UserActions action);
 	void Execute();
