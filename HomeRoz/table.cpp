@@ -92,6 +92,27 @@ void Table::mConEraseHomework()
 }
 void Table::mConSave(std::string dir)
 {
+	/*
+		*Structure of File*
+		"HomeRoz"
+		lesson_list size ->
+			lesson name size
+			lesson name
+			lesson link size
+			lesson link
+			lesson weeks size ->
+				weeks <-
+			homework size ->
+				homework context size
+				homework context
+				homework fromdate day
+				homework fromdate month
+				homework todate day
+				homework todate month
+				homework done <-
+			<-
+		"HomeRoz"
+	*/
 	std::ofstream fout;
 	const std::string cBuffer = "HomeRoz";
 	fout.open(dir, std::ios::binary | std::ios::out);
@@ -126,6 +147,11 @@ void Table::mConSave(std::string dir)
 }
 void Table::mConLoad(std::string dir)
 {
+	std::ifstream fin;
+	fin.open(dir, std::ios::binary | std::ios::out);
+	if (!fin) return;
+	fin.re
+	fin.close();
 }
 void Table::Execute()
 {
