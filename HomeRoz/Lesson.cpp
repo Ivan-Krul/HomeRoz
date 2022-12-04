@@ -1,9 +1,9 @@
 #include "lesson.h"
-auto Lesson::BeginWeeks()
+std::vector<Week>::iterator Lesson::BeginWeeks()
 {
 	return mWeeks.begin();
 }
-auto Lesson::EndWeeks()
+std::vector<Week>::iterator Lesson::EndWeeks()
 {
 	return mWeeks.end();
 }
@@ -11,11 +11,11 @@ size_t Lesson::SizeWeek()
 {
 	return mWeeks.size();
 }
-auto Lesson::getName()
+std::string Lesson::getName()
 {
 	return mName;
 }
-auto Lesson::getLink()
+std::string Lesson::getLink()
 {
 	return mLink;
 }
@@ -23,7 +23,7 @@ void Lesson::setName(std::string name)
 {
 	mName = name;
 }
-void Lesson::getLink(std::string link)
+void Lesson::setLink(std::string link)
 {
 	mLink = link;
 }

@@ -15,7 +15,7 @@ public:
 	std::string getName();
 	std::string getLink();
 	void setName(std::string name);
-	void getLink(std::string link);
+	void setLink(std::string link);
 	void PushWeek(Week week);
 	void PopWeek(std::vector<Week>::iterator iter);
 	std::string FormatToString();

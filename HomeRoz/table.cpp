@@ -111,7 +111,7 @@ void Table::mConSave(std::string dir)
 				homework todate month
 				homework done <-
 			<-
-		"HomeRoz"
+		<-
 	*/
 	std::ofstream fout;
 	const std::string cBuffer = "HomeRoz";
@@ -142,15 +142,51 @@ void Table::mConSave(std::string dir)
 			fout.write((char*)homework->getDone(), sizeof(homework->getDone()));
 		}
 	}
-	fout.write(cBuffer.c_str(), cBuffer.size());
 	fout.close();
 }
 void Table::mConLoad(std::string dir)
 {
 	std::ifstream fin;
-	fin.open(dir, std::ios::binary | std::ios::out);
+	char buffer[1024];
+	fin.open(dir, std::ios::binary | std::ios::in);
 	if (!fin) return;
-	fin.re
+	fin.read(buffer, 7);
+	if (buffer != "HomeRoz")
+	{
+		fin.close();
+
+	}
+	size_t sizelesson = 0;
+	fin.read((char*)sizelesson, sizeof(sizelesson));
+	for (size_t l = 0; l < sizelesson; l++)
+	{
+		Lesson lesson;
+		size_t sizestr;
+		size_t sizehw;
+		fin.read((char*)sizestr, sizeof(sizestr));
+		fin.read(buffer, sizestr);
+		lesson.setName(buffer);
+		fin.read((char*)sizestr, sizeof(sizestr));
+		fin.read(buffer, sizestr);
+		lesson.setLink(buffer);
+		fin.read((char*)sizestr, sizeof(sizestr));
+		for (size_t w = 0; w < sizestr; w++)
+		{
+			Week week;
+			fin.read((char*)week, sizeof(week));
+			lesson.PushWeek(week);
+		}
+		fin.read((char*)sizehw, sizeof(sizehw));
+		for (size_t hw = 0; hw < sizehw; hw++)
+		{
+			Homework homework;
+			homework.setLesson(&lesson);
+			fin.read((char*)sizestr, sizeof(sizestr));
+			fin.read(buffer, sizestr);
+			homework.setContex(buffer);
+
+		}
+	}
 	fin.close();
 }
 void Table::Execute()
