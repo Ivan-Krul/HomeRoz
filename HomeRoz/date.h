@@ -24,7 +24,7 @@ public:
 	short ConvertMonthDays(Month month);
 	std::string ConvertMonthToString();
 	short getDay();
-	Month getMonth() {}
+	Month getMonth();
 	void setDay(short day);
 	void setMonth(Month month);
 	void setMonth(short month);

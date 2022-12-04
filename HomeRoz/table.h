@@ -3,6 +3,8 @@
 #include "lesson.h"
 #include "homeworkselect.h"
 #include <list>
+#include <vector>
+#include <string>
 #include <fstream>
 class Table
 {
@@ -12,6 +14,7 @@ public:
 private:
 	HomeworkSelect mHomeworkSelect;
 	std::string mInputString;
+	std::string mInputBuffer;
 	UserActions mCurrentAction = UserActions::nothing;
 	LineChoose mLineChoose;
 	std::list<Lesson>::iterator mIterLesson = mHomeworkSelect.getLessonList().begin();
@@ -35,9 +38,13 @@ private:
 	void mConEraseHomework();
 	void mConSave();
 	void mConLoad();
+	void mConInput();
 public:
 	void SenseControl(UserActions action);
 	void Execute();
+	std::string& GiveInput();
+	void CheckInput();
+	LineChoose getLineChoose();
 public:
 	enum class LineChoose
 	{

@@ -206,3 +206,7 @@ void Table::mConLoad()
 	}
 	fin.close();
 }
+void Table::mConInput()
+{
+	mIsInputAwait = !mIsInputAwait;
+}
