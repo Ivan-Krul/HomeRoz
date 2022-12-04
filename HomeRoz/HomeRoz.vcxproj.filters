@@ -47,6 +47,9 @@
     <ClCompile Include="homeworkselect.cpp">
       <Filter>Source Files\Table\HomeworkSelect</Filter>
     </ClCompile>
+    <ClCompile Include="tablecon.cpp">
+      <Filter>Source Files\Table</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">

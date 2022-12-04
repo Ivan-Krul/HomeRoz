@@ -17,6 +17,11 @@ private:
 	std::list<Lesson>::iterator mIterLesson = mHomeworkSelect.getLessonList().begin();
 	std::list<Homework>::iterator mIterHomework;
 	bool mIsSelectHW = false;
+	bool mIsInputAwait = false;
+	bool mIsInputBufferise = false;
+private:
+	std::string mWriteStrBinaryFin(std::ifstream& fin);
+	Date mWriteDateBinaryFin(std::ifstream& fin);
 private:
 	void mConNothing();
 	void mConMoveUp();
@@ -28,8 +33,8 @@ private:
 	void mConSelectHomework();
 	void mConEraseLesson();
 	void mConEraseHomework();
-	void mConSave(std::string dir);
-	void mConLoad(std::string dir);
+	void mConSave();
+	void mConLoad();
 public:
 	void SenseControl(UserActions action);
 	void Execute();
@@ -52,6 +57,7 @@ public:
 		move_right,
 		move_left,
 		input,
+		input_buffer,
 		create_lesson,
 		create_homework,
 		erase_lesson,
