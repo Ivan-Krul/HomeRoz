@@ -27,6 +27,9 @@
     <Filter Include="Source Files\Table\HomeworkSelect">
       <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Table\TableRend">
+      <UniqueIdentifier>{17edf8f5-b35b-4f07-9dd5-5e821ca48dd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,6 +53,9 @@
     <ClCompile Include="tablecon.cpp">
       <Filter>Source Files\Table</Filter>
     </ClCompile>
+    <ClCompile Include="tablerend.cpp">
+      <Filter>Source Files\Table\TableRend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">
@@ -72,6 +78,9 @@
     </ClInclude>
     <ClInclude Include="homeworkselect.h">
       <Filter>Source Files\Table\HomeworkSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="tablerend.h">
+      <Filter>Source Files\Table\TableRend</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
