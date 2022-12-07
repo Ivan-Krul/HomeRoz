@@ -53,6 +53,7 @@ public:
 	const HomeworkSelect getHomeworkSelect();
 	const std::list<Lesson>::iterator getIterLesson();
 	const std::list<Homework>::iterator getIterHomework();
+	std::list<Homework> getLatestHomework();
 public:
 	enum class LineChoose
 	{
@@ -82,3 +83,4 @@ public:
 		load
 	};
 };     
+#include "tablecon.cpp"

@@ -24,20 +24,20 @@
     <Filter Include="Source Files\FormatToString">
       <UniqueIdentifier>{ec2725a5-0ae7-4a39-9ffb-8ec318b28180}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Table\HomeworkSelect">
-      <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Table\TableRend">
-      <UniqueIdentifier>{17edf8f5-b35b-4f07-9dd5-5e821ca48dd3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Extended sources">
-      <UniqueIdentifier>{8c3dafb1-01f9-4ee5-9fe1-c3d3d9f50775}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Extended sources\Window">
-      <UniqueIdentifier>{43185900-c0ce-4c6c-9e3c-cb1df5c2ad0f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\RenderModule">
       <UniqueIdentifier>{7df99312-4647-4107-937e-79e046a375ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TableRend">
+      <UniqueIdentifier>{17edf8f5-b35b-4f07-9dd5-5e821ca48dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HomeworkSelect">
+      <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Files">
+      <UniqueIdentifier>{8c3dafb1-01f9-4ee5-9fe1-c3d3d9f50775}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Files\Window">
+      <UniqueIdentifier>{43185900-c0ce-4c6c-9e3c-cb1df5c2ad0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,16 +57,16 @@
       <Filter>Source Files\Table</Filter>
     </ClCompile>
     <ClCompile Include="homeworkselect.cpp">
-      <Filter>Source Files\Table\HomeworkSelect</Filter>
+      <Filter>Source Files\HomeworkSelect</Filter>
     </ClCompile>
     <ClCompile Include="tablecon.cpp">
       <Filter>Source Files\Table</Filter>
     </ClCompile>
     <ClCompile Include="tablerend.cpp">
-      <Filter>Source Files\Table\TableRend</Filter>
+      <Filter>Source Files\TableRend</Filter>
     </ClCompile>
     <ClCompile Include="ext\Window.cpp">
-      <Filter>Extended sources\Window</Filter>
+      <Filter>External Files\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,16 +89,16 @@
       <Filter>Source Files\Table</Filter>
     </ClInclude>
     <ClInclude Include="homeworkselect.h">
-      <Filter>Source Files\Table\HomeworkSelect</Filter>
+      <Filter>Source Files\HomeworkSelect</Filter>
     </ClInclude>
     <ClInclude Include="tablerend.h">
-      <Filter>Source Files\Table\TableRend</Filter>
+      <Filter>Source Files\TableRend</Filter>
     </ClInclude>
     <ClInclude Include="ext\Window.h">
-      <Filter>Extended sources\Window</Filter>
+      <Filter>External Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="ext\WindowsLib.h">
-      <Filter>Extended sources\Window</Filter>
+      <Filter>External Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="irendermodule.h">
       <Filter>Source Files\RenderModule</Filter>

@@ -37,12 +37,16 @@ void Table::mConMoveLeft()
 {
 	if (mLineChoose != LineChoose::lesson)
 		mLineChoose = static_cast<LineChoose>(static_cast<int>(mLineChoose) - 1);
+	if (mLineChoose != LineChoose::weeks && mIsSelectHW)
+		mConSelectHomework();
 	mConNothing();
 }
 void Table::mConMoveRight()
 {
 	if (mLineChoose != LineChoose::done)
 		mLineChoose = static_cast<LineChoose>(static_cast<int>(mLineChoose) + 1);
+	if (mLineChoose != LineChoose::homework && !mIsSelectHW)
+		mConSelectHomework();
 	mConNothing();
 }
 void Table::mConCreateLesson()
@@ -68,6 +72,10 @@ void Table::mConCreateHomework()
 void Table::mConSelectHomework()
 {
 	mIsSelectHW = !mIsSelectHW;
+	if (mIsSelectHW)
+		mLineChoose = LineChoose::homework;
+	else
+		mLineChoose = LineChoose::lesson;
 	mConNothing();
 }
 void Table::mConEraseLesson()

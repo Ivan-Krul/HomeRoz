@@ -249,3 +249,8 @@ const std::list<Homework>::iterator Table::getIterHomework()
 	return mIterHomework;
 }
 
+std::list<Homework> Table::getLatestHomework()
+{
+	return std::list<Homework>();
+}
+

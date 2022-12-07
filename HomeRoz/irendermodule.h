@@ -1,5 +1,6 @@
 #pragma once
 #include "homeworkselect.h"
+#include "ext/Window.h"
 __interface IRenderModule
 {
 	void getHomeworkSelect(HomeworkSelect hwselect);
@@ -8,5 +9,8 @@ __interface IRenderModule
 	void getIterLesson(std::list<Lesson>::iterator lesson);
 	void getIterHomework(std::list<Homework>::iterator homework);
 	void getInputCurPos(size_t curpos);
-	void Render();
+	void HearBufferingInput(bool word);
+	void HearAwaitingInput(bool word);
+	void HearHWSelectMode(bool word);
+	Window& Render();
 };

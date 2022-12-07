@@ -7,7 +7,16 @@ class TableRend : public IRenderModule
 private:
 	Window mWindow;
 	HomeworkSelect mHomeworkSelect;
-	COORD mCursorPosition;
+	std::string mInput;
+	Table::LineChoose mCurHor;
+	std::list<Lesson>::iterator mCurVertLesson;
+	std::list<Homework>::iterator mCurVertHomework;
+	size_t mCurInputPos = 0;
+	bool mIsBufInput;
+	bool mIsAwaitInput;
+	bool mIsHWSelectInput;
+private:
+	size_t mSpaceSize = 1;
 public:
 	void getHomeworkSelect(HomeworkSelect hwselect);
 	void getInput(std::string input);
@@ -15,6 +24,8 @@ public:
 	void getIterLesson(std::list<Lesson>::iterator lesson);
 	void getIterHomework(std::list<Homework>::iterator homework);
 	void getInputCurPos(size_t curpos);
-	void Render();
+	void HearBufferingInput(bool word);
+	void HearAwaitingInput(bool word);
+	void HearHWSelectMode(bool word);
+	Window& Render();
 };
-
