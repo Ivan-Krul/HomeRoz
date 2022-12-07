@@ -84,6 +84,7 @@ void Table::mConEraseHomework()
 	}
 	else
 		mConSelectHomework();
+	mConNothing();
 }
 void Table::mConSave()
 {
@@ -138,6 +139,7 @@ void Table::mConSave()
 		}
 	}
 	fout.close();
+	mConNothing();
 }
 void Table::mConLoad()
 {
@@ -191,22 +193,17 @@ void Table::mConLoad()
 		mHomeworkSelect.AddLesson(lesson);
 		fin.read((char*)sizehw, sizeof(sizehw));
 		for (size_t hw = 0; hw < sizehw; hw++)
-		{
-			Homework homework;
-			homework.setLesson(&lesson);
-			homework.setContex(mWriteStrBinaryFin(fin));
-			homework.setFromDate(mWriteDateBinaryFin(fin));
-			homework.setToDate(mWriteDateBinaryFin(fin));
-			bool is_done;
-			fin.read((char*)is_done, sizeof(is_done));
-			if (is_done)
-				homework.MarkDone();
-			mHomeworkSelect.AddHomework(homework);
-		}
+			mHomeworkSelect.AddHomework(mWriteHomeworkFromBinary(fin,lesson));
 	}
 	fin.close();
+	mConNothing();
 }
 void Table::mConInput()
 {
 	mIsInputAwait = !mIsInputAwait;
+}
+void Table::mConInputBuffer()
+{
+	mConInput();
+	mIsInputBufferise = !mIsInputBufferise;
 }

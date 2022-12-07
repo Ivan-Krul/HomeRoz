@@ -101,6 +101,19 @@ std::string Table::mListWeekToString(std::vector<Week>::iterator begin, std::vec
 	}
 	return str;
 }
+Homework Table::mWriteHomeworkFromBinary(std::ifstream& fin, Lesson lesson)
+{
+	Homework homework;
+	homework.setLesson(&lesson);
+	homework.setContex(mWriteStrBinaryFin(fin));
+	homework.setFromDate(mWriteDateBinaryFin(fin));
+	homework.setToDate(mWriteDateBinaryFin(fin));
+	bool is_done;
+	fin.read((char*)is_done, sizeof(is_done));
+	if (is_done)
+		homework.MarkDone();
+	return homework;
+}
 void Table::SenseControl(UserActions action)
 {
 	mCurrentAction = action;
@@ -217,6 +230,7 @@ void Table::CheckInput()
 		break;
 	}
 	mConInput();
+	mConNothing();
 }
 Table::LineChoose Table::getLineChoose()
 {
