@@ -144,6 +144,7 @@
     <ClInclude Include="homework.h" />
     <ClInclude Include="homeworkselect.h" />
     <ClInclude Include="iformattostring.h" />
+    <ClInclude Include="irendermodule.h" />
     <ClInclude Include="lesson.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="tablerend.h" />

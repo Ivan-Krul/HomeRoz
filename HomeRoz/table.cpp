@@ -101,7 +101,7 @@ std::string Table::mListWeekToString(std::vector<Week>::iterator begin, std::vec
 	}
 	return str;
 }
-Homework Table::mWriteHomeworkFromBinary(std::ifstream& fin, Lesson lesson)
+Homework Table::mWriteHomeworkFromBinary(std::ifstream& fin, Lesson& lesson)
 {
 	Homework homework;
 	homework.setLesson(&lesson);

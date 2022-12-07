@@ -28,7 +28,7 @@ private:
 	Date mFromStringToDate(std::string str);
 	std::vector<Week> mStringToListWeek(std::string str);
 	std::string mListWeekToString(std::vector<Week>::iterator begin, std::vector<Week>::iterator end);
-	Homework mWriteHomeworkFromBinary(std::ifstream& fin, Lesson lesson);
+	Homework mWriteHomeworkFromBinary(std::ifstream& fin, Lesson& lesson);
 private:
 	void mConNothing();
 	void mConMoveUp();
