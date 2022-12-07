@@ -25,6 +25,9 @@ private:
 private:
 	std::string mWriteStrBinaryFin(std::ifstream& fin);
 	Date mWriteDateBinaryFin(std::ifstream& fin);
+	Date mFromStringToDate(std::string str);
+	std::vector<Week> mStringToListWeek(std::string str);
+	std::string mListWeekToString(std::vector<Week>::iterator begin, std::vector<Week>::iterator end);
 private:
 	void mConNothing();
 	void mConMoveUp();
@@ -45,6 +48,9 @@ public:
 	std::string& GiveInput();
 	void CheckInput();
 	LineChoose getLineChoose();
+	const HomeworkSelect getHomeworkSelect();
+	const std::list<Lesson>::iterator getIterLesson();
+	const std::list<Homework>::iterator getIterHomework();
 public:
 	enum class LineChoose
 	{

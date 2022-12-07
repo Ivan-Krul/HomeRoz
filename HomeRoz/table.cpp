@@ -19,6 +19,88 @@ Date Table::mWriteDateBinaryFin(std::ifstream& fin)
 	date.setMonth(month);
 	return date;
 }
+Date Table::mFromStringToDate(std::string str)
+{
+	Date date;
+	std::string sday = str.substr(0, 2);
+	std::string smonth;
+	if (sday[1] == ' ')
+	{
+		sday.erase(1);
+		smonth = str.substr(2, 3);
+	}
+	smonth = str.substr(3, 3);
+	date.setDay(std::stoi(sday));
+	if (smonth == "Jan")
+		date.setMonth(Date::Month::january);
+	else if (smonth == "Feb")
+		date.setMonth(Date::Month::february);
+	else if (smonth == "Mar")
+		date.setMonth(Date::Month::march);
+	else if (smonth == "Apr")
+		date.setMonth(Date::Month::april);
+	else if (smonth == "May")
+		date.setMonth(Date::Month::may);
+	else if (smonth == "Jun")
+		date.setMonth(Date::Month::june);
+	else if (smonth == "Jul")
+		date.setMonth(Date::Month::july);
+	else if (smonth == "Aug")
+		date.setMonth(Date::Month::august);
+	else if (smonth == "Sep")
+		date.setMonth(Date::Month::september);
+	else if (smonth == "Oct")
+		date.setMonth(Date::Month::october);
+	else if (smonth == "Nov")
+		date.setMonth(Date::Month::november);
+	else if (smonth == "Dec")
+		date.setMonth(Date::Month::december);
+	return date;
+}
+std::vector<Week> Table::mStringToListWeek(std::string str)
+{
+	std::vector<Week> weeks;
+	std::string weekstr = "Def";
+	auto checked = false;
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (!checked)
+		{
+			weekstr = str.substr(i, 3);
+			if (weekstr == "Mon")
+				weeks.push_back(Week::monday);
+			else if (weekstr == "Tue")
+				weeks.push_back(Week::tuesday);
+			else if (weekstr == "Wed")
+				weeks.push_back(Week::wednesday);
+			else if (weekstr == "Thu")
+				weeks.push_back(Week::thursday);
+			else if (weekstr == "Fri")
+				weeks.push_back(Week::friday);
+			else if (weekstr == "Sat")
+				weeks.push_back(Week::saturday);
+			else if (weekstr == "Sun")
+				weeks.push_back(Week::sunday);
+			checked = true;
+		}
+		else if (str[i] == '/')
+			checked = false;
+	}
+	return weeks;
+}
+std::string Table::mListWeekToString(std::vector<Week>::iterator begin, std::vector<Week>::iterator end)
+{
+	std::string str;
+	auto week = begin;
+	str += WeekToString(*week);
+	week++;
+	for (week; week != end; week++)
+	{
+		str += '/';
+		str += WeekToString(*week);
+	}
+	return str;
+}
 void Table::SenseControl(UserActions action)
 {
 	mCurrentAction = action;
@@ -40,6 +122,7 @@ void Table::Execute()
 		mConMoveLeft();
 		break;
 	case Table::UserActions::input:
+		mConInput();
 		break;
 	case Table::UserActions::input_buffer:
 		break;
@@ -80,16 +163,7 @@ std::string& Table::GiveInput()
 		mInputString = mIterLesson->getLink();
 		break;
 	case Table::LineChoose::weeks: 
-		{
-			auto week = mIterLesson->BeginWeeks();
-			mInputString += WeekToString(*week);
-			week++;
-			for (week; week != mIterLesson->EndWeeks(); week++)
-			{
-				mInputString += '/';
-				mInputString += WeekToString(*week);
-			}
-		}
+			mInputString = mListWeekToString(mIterLesson->BeginWeeks(), mIterLesson->EndWeeks());
 		break;
 	case Table::LineChoose::homework:
 		mInputString = mIterHomework->getContex();
@@ -122,33 +196,7 @@ void Table::CheckInput()
 		break;
 	case Table::LineChoose::weeks:
 		{
-			std::vector<Week> weeks;
-			std::string weekstr = "Def";
-			auto checked = false;
-			for (size_t i = 0;i < mInputString.size();i++)
-			{
-				if (!checked)
-				{
-					weekstr = mInputString.substr(i, 3);
-					if (weekstr == "Mon")
-						weeks.push_back(Week::monday);
-					else if (weekstr == "Tue")
-						weeks.push_back(Week::tuesday);
-					else if (weekstr == "Wed")
-						weeks.push_back(Week::wednesday);
-					else if (weekstr == "Thu")
-						weeks.push_back(Week::thursday);
-					else if (weekstr == "Fri")
-						weeks.push_back(Week::friday);
-					else if (weekstr == "Sat")
-						weeks.push_back(Week::saturday);
-					else if (weekstr == "Sun")
-						weeks.push_back(Week::sunday);
-					checked = true;
-				}
-				else if (mInputString[i] == '/')
-					checked = false;
-			}
+			auto weeks = mStringToListWeek(mInputString);
 			for (int i = 0; i < mIterLesson->SizeWeek(); i++)
 				mIterLesson->PopWeek(mIterLesson->BeginWeeks());
 			for (auto& week : weeks)
@@ -159,90 +207,31 @@ void Table::CheckInput()
 		mIterHomework->setContex(mInputString);
 		break;
 	case Table::LineChoose::from_date:
-		{
-			Date date;
-			std::string sday = mInputString.substr(0,2);
-			std::string smonth;
-			if (sday[1] == ' ') 
-			{
-				sday.erase(1);
-				smonth = mInputString.substr(2, 3);
-			}
-			smonth = mInputString.substr(3, 3);
-			date.setDay(std::stoi(sday));
-			if (smonth == "Jan")
-				date.setMonth(Date::Month::january);
-			else if(smonth == "Feb")
-				date.setMonth(Date::Month::february);
-			else if (smonth == "Mar")
-				date.setMonth(Date::Month::march);
-			else if (smonth == "Apr")
-				date.setMonth(Date::Month::april);
-			else if (smonth == "May")
-				date.setMonth(Date::Month::may);
-			else if (smonth == "Jun")
-				date.setMonth(Date::Month::june);
-			else if (smonth == "Jul")
-				date.setMonth(Date::Month::july);
-			else if (smonth == "Aug")
-				date.setMonth(Date::Month::august);
-			else if (smonth == "Sep")
-				date.setMonth(Date::Month::september);
-			else if (smonth == "Oct")
-				date.setMonth(Date::Month::october);
-			else if (smonth == "Nov")
-				date.setMonth(Date::Month::november);
-			else if (smonth == "Dec")
-				date.setMonth(Date::Month::december);
-			mIterHomework->setFromDate(date);
-		}
+			mIterHomework->setFromDate(mFromStringToDate(mInputString));
 		break;
 	case Table::LineChoose::to_date:
-		{
-			Date date;
-			std::string sday = mInputString.substr(0, 2);
-			std::string smonth;
-			if (sday[1] == ' ')
-			{
-				sday.erase(1);
-				smonth = mInputString.substr(2, 3);
-			}
-			smonth = mInputString.substr(3, 3);
-			date.setDay(std::stoi(sday));
-			if (smonth == "Jan")
-				date.setMonth(Date::Month::january);
-			else if (smonth == "Feb")
-				date.setMonth(Date::Month::february);
-			else if (smonth == "Mar")
-				date.setMonth(Date::Month::march);
-			else if (smonth == "Apr")
-				date.setMonth(Date::Month::april);
-			else if (smonth == "May")
-				date.setMonth(Date::Month::may);
-			else if (smonth == "Jun")
-				date.setMonth(Date::Month::june);
-			else if (smonth == "Jul")
-				date.setMonth(Date::Month::july);
-			else if (smonth == "Aug")
-				date.setMonth(Date::Month::august);
-			else if (smonth == "Sep")
-				date.setMonth(Date::Month::september);
-			else if (smonth == "Oct")
-				date.setMonth(Date::Month::october);
-			else if (smonth == "Nov")
-				date.setMonth(Date::Month::november);
-			else if (smonth == "Dec")
-				date.setMonth(Date::Month::december);
-			mIterHomework->setToDate(date);
-		}
+			mIterHomework->setToDate(mFromStringToDate(mInputString));
 		break;
 	case Table::LineChoose::done:
 		mIterHomework->MarkDone();
 		break;
 	}
+	mConInput();
 }
 Table::LineChoose Table::getLineChoose()
 {
 	return mLineChoose;
+}
+const HomeworkSelect Table::getHomeworkSelect()
+{
+	return mHomeworkSelect;
+}
+const std::list<Lesson>::iterator Table::getIterLesson()
+{
+	return mIterLesson;
+}
+const std::list<Homework>::iterator Table::getIterHomework()
+{
+	return mIterHomework;
 }
 
