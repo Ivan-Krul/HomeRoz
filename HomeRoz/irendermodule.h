@@ -7,5 +7,6 @@ __interface IRenderModule
 	void getLineChoose(Table::LineChoose lineChoose);
 	void getIterLesson(std::list<Lesson>::iterator lesson);
 	void getIterHomework(std::list<Homework>::iterator homework);
+	void getInputCurPos(size_t curpos);
 	void Render();
 };
