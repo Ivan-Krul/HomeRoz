@@ -17,6 +17,10 @@ private:
 	bool mIsHWSelectInput;
 private:
 	size_t mSpaceSize = 1;
+private:
+	COORD mCalculateCursorPos();
+	COORD mCalculateCurPosNInpNSel();
+	COORD mCalculateCurPosNInpYSel();
 public:
 	void getHomeworkSelect(HomeworkSelect hwselect);
 	void getInput(std::string input);
