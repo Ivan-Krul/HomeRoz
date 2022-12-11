@@ -68,6 +68,9 @@
     <ClCompile Include="ext\Window.cpp">
       <Filter>External Files\Window</Filter>
     </ClCompile>
+    <ClCompile Include="tablerend_cursor.cpp">
+      <Filter>Source Files\TableRend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">

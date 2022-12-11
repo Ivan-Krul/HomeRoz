@@ -136,6 +136,7 @@
     <ClCompile Include="table.cpp" />
     <ClCompile Include="tablecon.cpp" />
     <ClCompile Include="tablerend.cpp" />
+    <ClCompile Include="tablerend_cursor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />

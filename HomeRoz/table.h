@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <algorithm>
 class Table
 {
 public:
@@ -29,6 +30,7 @@ private:
 	std::vector<Week> mStringToListWeek(std::string str);
 	std::string mListWeekToString(std::vector<Week>::iterator begin, std::vector<Week>::iterator end);
 	Homework mWriteHomeworkFromBinary(std::ifstream& fin, Lesson& lesson);
+	bool mSortHomeworkByDate(Homework& hw1, Homework& hw2);
 private:
 	void mConNothing();
 	void mConMoveUp();

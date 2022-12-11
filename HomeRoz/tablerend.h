@@ -15,12 +15,15 @@ private:
 	bool mIsBufInput;
 	bool mIsAwaitInput;
 	bool mIsHWSelectInput;
+	const std::string mInputSplitter = "/";
 private:
 	size_t mSpaceSize = 1;
 private:
 	COORD mCalculateCursorPos();
 	COORD mCalculateCurPosNInpNSel();
 	COORD mCalculateCurPosNInpYSel();
+	COORD mCalculateCurPosYInpYSel();
+	COORD mCalculateCurPosYInpNSel();
 public:
 	void getHomeworkSelect(HomeworkSelect hwselect);
 	void getInput(std::string input);

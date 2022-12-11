@@ -114,6 +114,11 @@ Homework Table::mWriteHomeworkFromBinary(std::ifstream& fin, Lesson& lesson)
 		homework.MarkDone();
 	return homework;
 }
+bool Table::mSortHomeworkByDate(Homework& hw1, Homework& hw2)
+{
+	// 1 Jan < 31 Dec
+	return hw1.getToDate().ConvertDateToDays() < hw2.getToDate().ConvertDateToDays();
+}
 void Table::SenseControl(UserActions action)
 {
 	mCurrentAction = action;
@@ -138,6 +143,7 @@ void Table::Execute()
 		mConInput();
 		break;
 	case Table::UserActions::input_buffer:
+		mConInputBuffer();
 		break;
 	case Table::UserActions::create_lesson:
 		mConCreateLesson();
@@ -167,30 +173,32 @@ void Table::Execute()
 }
 std::string& Table::GiveInput()
 {
-	switch (mLineChoose)
-	{
-	case Table::LineChoose::lesson:
-		mInputString = mIterLesson->getName();
-		break;
-	case Table::LineChoose::link:
-		mInputString = mIterLesson->getLink();
-		break;
-	case Table::LineChoose::weeks: 
-			mInputString = mListWeekToString(mIterLesson->BeginWeeks(), mIterLesson->EndWeeks());
-		break;
-	case Table::LineChoose::homework:
-		mInputString = mIterHomework->getContex();
-		break;
-	case Table::LineChoose::from_date:
-		mInputString = mIterHomework->getFromDate().FormatToString();
-		break;
-	case Table::LineChoose::to_date:
-		mInputString = mIterHomework->getToDate().FormatToString();
-		break;
-	case Table::LineChoose::done:
-		mIterHomework->MarkDone();
-		mIsInputAwait = false;
-		break;
+	if (!mIsInputBufferise) {
+		switch (mLineChoose)
+		{
+			case Table::LineChoose::lesson:
+				mInputString = mIterLesson->getName();
+				break;
+			case Table::LineChoose::link:
+				mInputString = mIterLesson->getLink();
+				break;
+			case Table::LineChoose::weeks:
+				mInputString = mListWeekToString(mIterLesson->BeginWeeks(), mIterLesson->EndWeeks());
+				break;
+			case Table::LineChoose::homework:
+				mInputString = mIterHomework->getContex();
+				break;
+			case Table::LineChoose::from_date:
+				mInputString = mIterHomework->getFromDate().FormatToString();
+				break;
+			case Table::LineChoose::to_date:
+				mInputString = mIterHomework->getToDate().FormatToString();
+				break;
+			case Table::LineChoose::done:
+				mIterHomework->MarkDone();
+				mIsInputAwait = false;
+				break;
+		}
 	}
 	if (!mIsInputAwait)
 		return mInputBuffer;
@@ -199,35 +207,43 @@ std::string& Table::GiveInput()
 }
 void Table::CheckInput()
 {
-	switch (mLineChoose)
+	if (mIsInputBufferise)
 	{
-	case Table::LineChoose::lesson:
-		mIterLesson->setName(mInputString);
-		break;
-	case Table::LineChoose::link:
-		mIterLesson->setLink(mInputString);
-		break;
-	case Table::LineChoose::weeks:
+		mInputBuffer = mInputString;
+		mConInputBuffer();
+	}
+	else
+	{
+		switch (mLineChoose)
 		{
-			auto weeks = mStringToListWeek(mInputString);
-			for (int i = 0; i < mIterLesson->SizeWeek(); i++)
-				mIterLesson->PopWeek(mIterLesson->BeginWeeks());
-			for (auto& week : weeks)
-				mIterLesson->PushWeek(week);
+			case Table::LineChoose::lesson:
+				mIterLesson->setName(mInputString);
+				break;
+			case Table::LineChoose::link:
+				mIterLesson->setLink(mInputString);
+				break;
+			case Table::LineChoose::weeks:
+				{
+					auto weeks = mStringToListWeek(mInputString);
+					for (int i = 0; i < mIterLesson->SizeWeek(); i++)
+						mIterLesson->PopWeek(mIterLesson->BeginWeeks());
+					for (auto& week : weeks)
+						mIterLesson->PushWeek(week);
+				}
+				break;
+			case Table::LineChoose::homework:
+				mIterHomework->setContex(mInputString);
+				break;
+			case Table::LineChoose::from_date:
+				mIterHomework->setFromDate(mFromStringToDate(mInputString));
+				break;
+			case Table::LineChoose::to_date:
+				mIterHomework->setToDate(mFromStringToDate(mInputString));
+				break;
+			case Table::LineChoose::done:
+				mIterHomework->MarkDone();
+				break;
 		}
-		break;
-	case Table::LineChoose::homework:
-		mIterHomework->setContex(mInputString);
-		break;
-	case Table::LineChoose::from_date:
-			mIterHomework->setFromDate(mFromStringToDate(mInputString));
-		break;
-	case Table::LineChoose::to_date:
-			mIterHomework->setToDate(mFromStringToDate(mInputString));
-		break;
-	case Table::LineChoose::done:
-		mIterHomework->MarkDone();
-		break;
 	}
 	mConInput();
 	mConNothing();
@@ -250,7 +266,26 @@ const std::list<Homework>::iterator Table::getIterHomework()
 }
 std::list<Homework> Table::getLatestHomework()
 {
-	// UNDONE: Create a realisation of Table::getLatestHomework()
-	return std::list<Homework>();
+	std::list<Homework> latesthw;
+	auto lesson_list = mHomeworkSelect.getLessonList();
+	for (auto lesson = lesson_list.begin(); lesson != lesson_list.end(); lesson++)
+	{
+		// First need to sort by date,...
+		// then, we're parse from end to begin...
+		// and search the nearest future homework
+		// and push in list
+		auto homework_list = mHomeworkSelect.getHomeworkList(*lesson);
+		std::sort(homework_list.begin(), homework_list.end(), mSortHomeworkByDate);
+		Date current_date;
+		current_date.SetCurrentTime();
+		auto homework = homework_list.begin();
+		for (homework; homework != homework_list.end(); homework++)
+			if ((homework->getToDate().ConvertDateToDays() - current_date.ConvertDateToDays()) > 0)
+				break;
+		if (homework != homework_list.end())
+			homework--;
+		latesthw.push_back(*homework);
+	}
+	return latesthw;
 }
 
