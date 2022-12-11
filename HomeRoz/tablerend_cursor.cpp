@@ -65,28 +65,33 @@ COORD TableRend::mCalculateCurPosYInpYSel()
 	COORD cursor_pos = { 0,0 };
 	// X cursor
 	cursor_pos.X += 2; // #####: #####
-	switch (mCurHor)
+	if (!mIsBufInput) 
 	{
-		case Table::LineChoose::homework: // *lesson/homework: |
-			cursor_pos.X += mCurVertHomework->getLesson()->getName().size();
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 8;
-			break;
-		case Table::LineChoose::from_date: // *lesson/homework/from_date: |
-			cursor_pos.X += mCurVertHomework->getLesson()->getName().size();
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 8;
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 9;
-			break;
-		case Table::LineChoose::to_date: // *lesson/homework/to_date: |
-			cursor_pos.X += mCurVertHomework->getLesson()->getName().size();
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 8;
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 7;
-			break;
+		switch (mCurHor)
+		{
+			case Table::LineChoose::homework: // *lesson/homework: |
+				cursor_pos.X += mCurVertHomework->getLesson()->getName().size();
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 8;
+				break;
+			case Table::LineChoose::from_date: // *lesson/homework/from_date: |
+				cursor_pos.X += mCurVertHomework->getLesson()->getName().size();
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 8;
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 9;
+				break;
+			case Table::LineChoose::to_date: // *lesson/homework/to_date: |
+				cursor_pos.X += mCurVertHomework->getLesson()->getName().size();
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 8;
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 7;
+				break;
+		}
 	}
+	else
+		cursor_pos.X += 6; // Buffer
 	cursor_pos.X += mCurInputPos;
 	// Y cursor
 	cursor_pos.Y += mHomeworkSelect.getHomeworkList(*mCurVertLesson).size();
@@ -98,22 +103,27 @@ COORD TableRend::mCalculateCurPosYInpNSel()
 	COORD cursor_pos = { 0,0 };
 	// X cursor
 	cursor_pos.X += 2; // #####: #####
-	switch (mCurHor)
+	if (!mIsBufInput)
 	{
-		case Table::LineChoose::lesson: // *lesson: |
-			cursor_pos.X += mCurVertLesson->getName().size();
-			break;
-		case Table::LineChoose::link: // *lesson/link: |
-			cursor_pos.X += mCurVertLesson->getName().size();
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 4;
-			break;
-		case Table::LineChoose::weeks: // *lesson/weeks: |
-			cursor_pos.X += mCurVertLesson->getName().size();
-			cursor_pos.X += mInputSplitter.size();
-			cursor_pos.X += 5;
-			break;
+		switch (mCurHor)
+		{
+			case Table::LineChoose::lesson: // *lesson: |
+				cursor_pos.X += mCurVertLesson->getName().size();
+				break;
+			case Table::LineChoose::link: // *lesson/link: |
+				cursor_pos.X += mCurVertLesson->getName().size();
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 4;
+				break;
+			case Table::LineChoose::weeks: // *lesson/weeks: |
+				cursor_pos.X += mCurVertLesson->getName().size();
+				cursor_pos.X += mInputSplitter.size();
+				cursor_pos.X += 5;
+				break;
+		}
 	}
+	else
+		cursor_pos.X += 6; // Buffer
 	cursor_pos.X += mCurInputPos;
 	// Y cursor
 	cursor_pos.Y += mHomeworkSelect.getHomeworkList(*mCurVertLesson).size();
