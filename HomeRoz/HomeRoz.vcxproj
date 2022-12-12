@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="date.cpp" />
+    <ClCompile Include="executor.cpp" />
     <ClCompile Include="ext\Window.cpp" />
     <ClCompile Include="homework.cpp" />
     <ClCompile Include="homeworkselect.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
+    <ClInclude Include="executor.h" />
     <ClInclude Include="ext\Window.h" />
     <ClInclude Include="ext\WindowsLib.h" />
     <ClInclude Include="homework.h" />

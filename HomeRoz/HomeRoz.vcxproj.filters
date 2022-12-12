@@ -45,6 +45,9 @@
     <Filter Include="Source Files\TableInp">
       <UniqueIdentifier>{901bfd34-d2c8-4329-8afa-58e9173efd00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Executor">
+      <UniqueIdentifier>{f35ce4e9-1e27-41a4-8c1b-dfc3bd705528}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="tableinp.cpp">
       <Filter>Source Files\TableInp</Filter>
+    </ClCompile>
+    <ClCompile Include="executor.cpp">
+      <Filter>Source Files\Executor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +126,9 @@
     </ClInclude>
     <ClInclude Include="tableinp.h">
       <Filter>Source Files\TableInp</Filter>
+    </ClInclude>
+    <ClInclude Include="executor.h">
+      <Filter>Source Files\Executor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
