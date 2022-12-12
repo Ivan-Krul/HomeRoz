@@ -135,6 +135,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="table.cpp" />
     <ClCompile Include="tablecon.cpp" />
+    <ClCompile Include="tableinp.cpp" />
     <ClCompile Include="tablerend.cpp" />
     <ClCompile Include="tablerend_cursor.cpp" />
   </ItemGroup>
@@ -145,9 +146,11 @@
     <ClInclude Include="homework.h" />
     <ClInclude Include="homeworkselect.h" />
     <ClInclude Include="iformattostring.h" />
+    <ClInclude Include="iinputmodule.h" />
     <ClInclude Include="irendermodule.h" />
     <ClInclude Include="lesson.h" />
     <ClInclude Include="table.h" />
+    <ClInclude Include="tableinp.h" />
     <ClInclude Include="tablerend.h" />
     <ClInclude Include="week.h" />
   </ItemGroup>

@@ -39,6 +39,12 @@
     <Filter Include="External Files\Window">
       <UniqueIdentifier>{43185900-c0ce-4c6c-9e3c-cb1df5c2ad0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\InputModule">
+      <UniqueIdentifier>{dbe983f2-88eb-48c0-85bf-5ed00413ebdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TableInp">
+      <UniqueIdentifier>{901bfd34-d2c8-4329-8afa-58e9173efd00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -70,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="tablerend_cursor.cpp">
       <Filter>Source Files\TableRend</Filter>
+    </ClCompile>
+    <ClCompile Include="tableinp.cpp">
+      <Filter>Source Files\TableInp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +114,12 @@
     </ClInclude>
     <ClInclude Include="irendermodule.h">
       <Filter>Source Files\RenderModule</Filter>
+    </ClInclude>
+    <ClInclude Include="iinputmodule.h">
+      <Filter>Source Files\InputModule</Filter>
+    </ClInclude>
+    <ClInclude Include="tableinp.h">
+      <Filter>Source Files\TableInp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
