@@ -30,9 +30,6 @@
     <Filter Include="Source Files\TableRend">
       <UniqueIdentifier>{17edf8f5-b35b-4f07-9dd5-5e821ca48dd3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\HomeworkSelect">
-      <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
-    </Filter>
     <Filter Include="External Files">
       <UniqueIdentifier>{8c3dafb1-01f9-4ee5-9fe1-c3d3d9f50775}</UniqueIdentifier>
     </Filter>
@@ -47,6 +44,9 @@
     </Filter>
     <Filter Include="Source Files\Executor">
       <UniqueIdentifier>{f35ce4e9-1e27-41a4-8c1b-dfc3bd705528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Homework\HomeworkSelect">
+      <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +66,7 @@
       <Filter>Source Files\Table</Filter>
     </ClCompile>
     <ClCompile Include="homeworkselect.cpp">
-      <Filter>Source Files\HomeworkSelect</Filter>
+      <Filter>Source Files\Homework\HomeworkSelect</Filter>
     </ClCompile>
     <ClCompile Include="tablecon.cpp">
       <Filter>Source Files\Table</Filter>
@@ -107,7 +107,7 @@
       <Filter>Source Files\Table</Filter>
     </ClInclude>
     <ClInclude Include="homeworkselect.h">
-      <Filter>Source Files\HomeworkSelect</Filter>
+      <Filter>Source Files\Homework\HomeworkSelect</Filter>
     </ClInclude>
     <ClInclude Include="tablerend.h">
       <Filter>Source Files\TableRend</Filter>

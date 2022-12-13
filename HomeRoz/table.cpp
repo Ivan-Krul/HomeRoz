@@ -171,6 +171,15 @@ void Table::Execute()
 		break;
 	}
 }
+bool Table::getIsSelectHW() {
+	return mIsSelectHW;
+}
+bool Table::getIsInputAwait() {
+  return mIsInputAwait;
+}
+bool Table::getIsInputBufferise() {
+  return mIsInputBufferise;
+}
 std::string& Table::GiveInput()
 {
 	if (!mIsInputBufferise) {

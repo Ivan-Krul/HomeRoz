@@ -7,6 +7,7 @@
 #define IOSTREAM
 #include <iostream>
 #endif // !IOSTREAM
+#pragma warning(disable : 4996)
 class Date : public IFormatToString
 {
 public:

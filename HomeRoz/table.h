@@ -49,6 +49,9 @@ private:
 public:
 	void SenseControl(UserActions action);
 	void Execute();
+	bool getIsSelectHW();
+	bool getIsInputAwait();
+	bool getIsInputBufferise();
 	std::string& GiveInput();
 	void CheckInput();
 	LineChoose getLineChoose();
@@ -85,4 +88,3 @@ public:
 		load
 	};
 };     
-#include "tablecon.cpp"

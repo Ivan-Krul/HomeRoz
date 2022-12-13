@@ -4,7 +4,7 @@
 #include <conio.h>
 class TableInp : public IInputModule
 {
-	std::string mInput = "";
+	std::string* mpInput;
 	Table::UserActions mSavedAction;
 	bool mIsHWSelect = false;
 	bool mIsInput = false;
@@ -16,9 +16,10 @@ public:
 	void getIsHWSelect(bool hwselect);
 	void SenseKeyboard();
 	Table::UserActions GiveCommand();
-	void StartTypeInput(std::string input);
+	void StartTypeInput(std::string& input);
 	void Type();
 	void DoneInput();
-	std::string ReturnInput();
+	std::string& ReturnInput();
+	size_t getCurInput();
 };
 

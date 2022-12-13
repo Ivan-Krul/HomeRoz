@@ -1,6 +1,7 @@
 #pragma once
 #include <chrono>
 #include <string>
+#pragma warning(disable : 4996)
 enum class Week
 {
 	monday = 0,

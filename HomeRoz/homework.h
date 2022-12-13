@@ -3,7 +3,7 @@
 #include "lesson.h"
 #include "iformattostring.h"
 #include <string>
-class Homework : IFormatToString
+class Homework : public IFormatToString
 {
 	bool mDone;
 	Lesson* mpLesson;

@@ -187,14 +187,14 @@ void Table::mConLoad()
 	for (size_t l = 0; l < sizelesson; l++)
 	{
 		Lesson lesson;
-		size_t sizestr;
-		size_t sizehw;
+		size_t sizestr = 0;
+		size_t sizehw = 0;
 		lesson.setName(mWriteStrBinaryFin(fin));
 		lesson.setLink(mWriteStrBinaryFin(fin));
 		fin.read((char*)sizestr, sizeof(sizestr));
 		for (size_t w = 0; w < sizestr; w++)
 		{
-			Week week;
+			Week week = Week::monday;
 			fin.read((char*)week, sizeof(week));
 			lesson.PushWeek(week);
 		}
