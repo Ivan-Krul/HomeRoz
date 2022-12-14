@@ -39,15 +39,24 @@ void Homework::MarkDone()
 {
 	mDone = !mDone;
 }
+Homework& Homework::operator=(const Homework& some)
+{
+	mContext = some.mContext;
+	mpLesson = some.mpLesson;
+	mFromDate = some.mFromDate;
+	mToDate = some.mToDate;
+	mDone = some.mDone;
+	return *this;
+}
 std::string Homework::FormatToString()
 {
 	std::string string;
 	string = mContext;
-	string += ' ';
+	string += " | ";
 	string += mFromDate.FormatToString();
-	string += ' ';
+	string += " | ";
 	string += mToDate.FormatToString();
-	string += ' ';
+	string += " | ";
 	string += mDone ? "done" : "dont";
 	return string;
 }

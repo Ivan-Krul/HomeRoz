@@ -32,6 +32,7 @@ public:
 	void Test();
 	void SetCurrentTime();
 	std::string FormatToString();
+	Date& operator=(const Date& some);
 	enum class Month
 	{
 		january = 0,

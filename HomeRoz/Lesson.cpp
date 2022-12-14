@@ -40,12 +40,15 @@ std::string Lesson::FormatToString()
 	std::string string;
 	string = mName;
 	string += ' ';
-	string += mLink.empty() ? "no link" : "link   ";
+	string += mLink.empty() ? "    " : "link";
 	string += " (";
-	for (int w = 0; w < mWeeks.size(); w++)
-	{
-		string += WeekToString(mWeeks[w]);
-		string += '/';
+	if (!(mWeeks.size() < 1)) {
+		string += WeekToString(mWeeks[0]);
+		for (int w = 0; w < mWeeks.size() - 1; w++)
+		{
+			string += '/';
+			string += WeekToString(mWeeks[w + 1]);
+		}
 	}
 	string += ")";
 	return string;

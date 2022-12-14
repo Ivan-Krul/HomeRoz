@@ -106,6 +106,12 @@ std::string Date::FormatToString()
 	string += ConvertMonthToString();
 	return string;
 }
+Date& Date::operator=(const Date& some)
+{
+	mDay = some.mDay;
+	mMonth = some.mMonth;
+	return *this;
+}
 void Date::mTestConvertDateToDays0()
 {
 	short days;

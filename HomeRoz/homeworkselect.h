@@ -4,9 +4,13 @@
 #include <list>
 #include <map>
 #include <string>
+#include <algorithm>
 class HomeworkSelect
 {
-	std::map<Lesson, std::list<Homework>> mHomeworkList;
+	std::list<std::pair<Lesson, std::list<Homework>>> mHomeworkList;
+private:
+	std::list<std::pair<Lesson, std::list<Homework>>>::iterator mFindLesson(Lesson& lesson);
+	std::list<Homework>::iterator mFindHomeworks(Homework& hw);
 public:
 	std::list<Homework> getHomeworkList(Lesson lesson);
 	std::list<Lesson> getLessonList();

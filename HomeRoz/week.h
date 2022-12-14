@@ -12,13 +12,13 @@ enum class Week
 	saturday,
 	sunday
 };
-Week WeekSetCurrentTime()
+inline Week WeekSetCurrentTime()
 {
 	time_t now = time(0);
 	tm* gmtm = gmtime(&now);
-	return static_cast<Week>(gmtm->tm_wday);
+	return static_cast<Week>(gmtm->tm_wday-1);
 }
-std::string WeekToString(Week week)
+inline std::string WeekToString(Week week)
 {
 	switch (week)
 	{

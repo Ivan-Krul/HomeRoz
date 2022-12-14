@@ -21,6 +21,7 @@ public:
 	void setToDate(Date toDate);
 	void setFromDate(Date fromDate);
 	void MarkDone();
+	Homework& operator=(const Homework& some);
 	std::string FormatToString();
 };
 

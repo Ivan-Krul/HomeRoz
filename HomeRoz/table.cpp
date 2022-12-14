@@ -2,7 +2,7 @@
 std::string Table::mWriteStrBinaryFin(std::ifstream& fin)
 {
 	std::string str;
-	size_t size;
+	size_t size = 0;
 	fin.read((char*)size, sizeof(size));
 	str.resize(size);
 	fin.read((char*)str.c_str(), size);
@@ -11,8 +11,8 @@ std::string Table::mWriteStrBinaryFin(std::ifstream& fin)
 Date Table::mWriteDateBinaryFin(std::ifstream& fin)
 {
 	Date date;
-	unsigned short day;
-	Date::Month month;
+	unsigned short day = 0;
+	Date::Month month = Date::Month::january;
 	fin.read((char*)day, sizeof(day));
 	fin.read((char*)month, sizeof(month));
 	date.setDay(day);
@@ -108,7 +108,7 @@ Homework Table::mWriteHomeworkFromBinary(std::ifstream& fin, Lesson& lesson)
 	homework.setContex(mWriteStrBinaryFin(fin));
 	homework.setFromDate(mWriteDateBinaryFin(fin));
 	homework.setToDate(mWriteDateBinaryFin(fin));
-	bool is_done;
+	bool is_done = false;
 	fin.read((char*)is_done, sizeof(is_done));
 	if (is_done)
 		homework.MarkDone();
@@ -284,7 +284,7 @@ std::list<Homework> Table::getLatestHomework()
 		// and search the nearest future homework
 		// and push in list
 		auto homework_list = mHomeworkSelect.getHomeworkList(*lesson);
-		std::sort(homework_list.begin(), homework_list.end(), mSortHomeworkByDate);
+		//std::sort(homework_list.begin(), homework_list.end(), mSortHomeworkByDate);
 		Date current_date;
 		current_date.SetCurrentTime();
 		auto homework = homework_list.begin();

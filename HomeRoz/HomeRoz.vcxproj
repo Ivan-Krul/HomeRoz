@@ -128,21 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="date.cpp" />
-    <ClCompile Include="executor.cpp" />
     <ClCompile Include="ext\Window.cpp" />
     <ClCompile Include="homework.cpp" />
     <ClCompile Include="homeworkselect.cpp" />
     <ClCompile Include="lesson.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="table.cpp" />
-    <ClCompile Include="tablecon.cpp" />
-    <ClCompile Include="tableinp.cpp" />
-    <ClCompile Include="tablerend.cpp" />
-    <ClCompile Include="tablerend_cursor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
-    <ClInclude Include="executor.h" />
     <ClInclude Include="ext\Window.h" />
     <ClInclude Include="ext\WindowsLib.h" />
     <ClInclude Include="homework.h" />
@@ -151,9 +144,6 @@
     <ClInclude Include="iinputmodule.h" />
     <ClInclude Include="irendermodule.h" />
     <ClInclude Include="lesson.h" />
-    <ClInclude Include="table.h" />
-    <ClInclude Include="tableinp.h" />
-    <ClInclude Include="tablerend.h" />
     <ClInclude Include="week.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

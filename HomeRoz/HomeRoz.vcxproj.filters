@@ -9,26 +9,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Table">
-      <UniqueIdentifier>{c1c5dab2-6818-4d76-a472-a27b1ff506c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Date">
       <UniqueIdentifier>{10cbd651-94e1-45b3-9f88-eda16d6def61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Lesson">
-      <UniqueIdentifier>{f3ae400a-8040-4b7b-8e6a-cce9dd4b3fa7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Homework">
-      <UniqueIdentifier>{f3f8e1ac-2f22-4833-88d2-76660bf4c362}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FormatToString">
-      <UniqueIdentifier>{ec2725a5-0ae7-4a39-9ffb-8ec318b28180}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\RenderModule">
-      <UniqueIdentifier>{7df99312-4647-4107-937e-79e046a375ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TableRend">
-      <UniqueIdentifier>{17edf8f5-b35b-4f07-9dd5-5e821ca48dd3}</UniqueIdentifier>
     </Filter>
     <Filter Include="External Files">
       <UniqueIdentifier>{8c3dafb1-01f9-4ee5-9fe1-c3d3d9f50775}</UniqueIdentifier>
@@ -36,17 +18,23 @@
     <Filter Include="External Files\Window">
       <UniqueIdentifier>{43185900-c0ce-4c6c-9e3c-cb1df5c2ad0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\InputModule">
-      <UniqueIdentifier>{dbe983f2-88eb-48c0-85bf-5ed00413ebdf}</UniqueIdentifier>
+    <Filter Include="Source Files\Homework">
+      <UniqueIdentifier>{ccd9d9e3-d77b-488c-be19-180a54988900}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TableInp">
-      <UniqueIdentifier>{901bfd34-d2c8-4329-8afa-58e9173efd00}</UniqueIdentifier>
+    <Filter Include="Source Files\Lesson">
+      <UniqueIdentifier>{d178920f-6344-45af-8962-ccb9b30726b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Executor">
-      <UniqueIdentifier>{f35ce4e9-1e27-41a4-8c1b-dfc3bd705528}</UniqueIdentifier>
+    <Filter Include="Source Files\IFormatToString">
+      <UniqueIdentifier>{c50e276d-d1b2-487b-8e55-e55d7b74d16a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Homework\HomeworkSelect">
-      <UniqueIdentifier>{f4a52c31-ad85-473a-b024-c38cc6299c25}</UniqueIdentifier>
+    <Filter Include="Source Files\HomeworkSelect">
+      <UniqueIdentifier>{c1fc184c-2474-4e20-8e3d-01296fc710ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IInputModule">
+      <UniqueIdentifier>{2f5b24bd-2663-4975-b4a8-97dfca65c224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IRenderModule">
+      <UniqueIdentifier>{364cbd7d-ffb0-494d-ac02-34f7032503eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -56,61 +44,22 @@
     <ClCompile Include="date.cpp">
       <Filter>Source Files\Date</Filter>
     </ClCompile>
-    <ClCompile Include="lesson.cpp">
-      <Filter>Source Files\Lesson</Filter>
+    <ClCompile Include="ext\Window.cpp">
+      <Filter>External Files\Window</Filter>
     </ClCompile>
     <ClCompile Include="homework.cpp">
       <Filter>Source Files\Homework</Filter>
     </ClCompile>
-    <ClCompile Include="table.cpp">
-      <Filter>Source Files\Table</Filter>
+    <ClCompile Include="lesson.cpp">
+      <Filter>Source Files\Lesson</Filter>
     </ClCompile>
     <ClCompile Include="homeworkselect.cpp">
-      <Filter>Source Files\Homework\HomeworkSelect</Filter>
-    </ClCompile>
-    <ClCompile Include="tablecon.cpp">
-      <Filter>Source Files\Table</Filter>
-    </ClCompile>
-    <ClCompile Include="tablerend.cpp">
-      <Filter>Source Files\TableRend</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\Window.cpp">
-      <Filter>External Files\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="tablerend_cursor.cpp">
-      <Filter>Source Files\TableRend</Filter>
-    </ClCompile>
-    <ClCompile Include="tableinp.cpp">
-      <Filter>Source Files\TableInp</Filter>
-    </ClCompile>
-    <ClCompile Include="executor.cpp">
-      <Filter>Source Files\Executor</Filter>
+      <Filter>Source Files\HomeworkSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">
       <Filter>Source Files\Date</Filter>
-    </ClInclude>
-    <ClInclude Include="week.h">
-      <Filter>Source Files\Date</Filter>
-    </ClInclude>
-    <ClInclude Include="lesson.h">
-      <Filter>Source Files\Lesson</Filter>
-    </ClInclude>
-    <ClInclude Include="homework.h">
-      <Filter>Source Files\Homework</Filter>
-    </ClInclude>
-    <ClInclude Include="iformattostring.h">
-      <Filter>Source Files\FormatToString</Filter>
-    </ClInclude>
-    <ClInclude Include="table.h">
-      <Filter>Source Files\Table</Filter>
-    </ClInclude>
-    <ClInclude Include="homeworkselect.h">
-      <Filter>Source Files\Homework\HomeworkSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="tablerend.h">
-      <Filter>Source Files\TableRend</Filter>
     </ClInclude>
     <ClInclude Include="ext\Window.h">
       <Filter>External Files\Window</Filter>
@@ -118,17 +67,26 @@
     <ClInclude Include="ext\WindowsLib.h">
       <Filter>External Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="irendermodule.h">
-      <Filter>Source Files\RenderModule</Filter>
+    <ClInclude Include="homework.h">
+      <Filter>Source Files\Homework</Filter>
+    </ClInclude>
+    <ClInclude Include="iformattostring.h">
+      <Filter>Source Files\IFormatToString</Filter>
+    </ClInclude>
+    <ClInclude Include="lesson.h">
+      <Filter>Source Files\Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="homeworkselect.h">
+      <Filter>Source Files\HomeworkSelect</Filter>
     </ClInclude>
     <ClInclude Include="iinputmodule.h">
-      <Filter>Source Files\InputModule</Filter>
+      <Filter>Source Files\IInputModule</Filter>
     </ClInclude>
-    <ClInclude Include="tableinp.h">
-      <Filter>Source Files\TableInp</Filter>
+    <ClInclude Include="irendermodule.h">
+      <Filter>Source Files\IRenderModule</Filter>
     </ClInclude>
-    <ClInclude Include="executor.h">
-      <Filter>Source Files\Executor</Filter>
+    <ClInclude Include="week.h">
+      <Filter>Source Files\Date</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
