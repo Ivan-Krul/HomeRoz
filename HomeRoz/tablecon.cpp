@@ -55,6 +55,7 @@ void Table::mConCreateLesson()
 	sTemplateLesson.setName("New Lesson");
 	sTemplateLesson.PushWeek(WeekSetCurrentTime());
 	mHomeworkSelect.AddLesson(sTemplateLesson);
+	mIterLesson = mHomeworkSelect.getLessonList().begin();
 	mConNothing();
 }
 void Table::mConCreateHomework()
@@ -67,6 +68,7 @@ void Table::mConCreateHomework()
 	sTemplateHomework.setToDate(date_from);
 	sTemplateHomework.setLesson(&(*mIterLesson));
 	mHomeworkSelect.AddHomework(sTemplateHomework);
+	mIterHomework = mHomeworkSelect.getHomeworkList(*mIterLesson).begin();
 	mConNothing();
 }
 void Table::mConSelectHomework()

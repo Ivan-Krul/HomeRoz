@@ -133,6 +133,8 @@
     <ClCompile Include="homeworkselect.cpp" />
     <ClCompile Include="lesson.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="table.cpp" />
+    <ClCompile Include="tablecon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
@@ -144,6 +146,7 @@
     <ClInclude Include="iinputmodule.h" />
     <ClInclude Include="irendermodule.h" />
     <ClInclude Include="lesson.h" />
+    <ClInclude Include="table.h" />
     <ClInclude Include="week.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

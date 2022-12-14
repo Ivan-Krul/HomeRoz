@@ -36,6 +36,15 @@
     <Filter Include="Source Files\IRenderModule">
       <UniqueIdentifier>{364cbd7d-ffb0-494d-ac02-34f7032503eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Table">
+      <UniqueIdentifier>{d270c0fd-1626-4637-8d03-09d143a2aa60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TableInp">
+      <UniqueIdentifier>{c00739f8-b143-4d65-ae74-5864aac652e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TableRend">
+      <UniqueIdentifier>{e4afe1c6-7966-4c5d-bc6c-b45af1d58341}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -55,6 +64,12 @@
     </ClCompile>
     <ClCompile Include="homeworkselect.cpp">
       <Filter>Source Files\HomeworkSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="table.cpp">
+      <Filter>Source Files\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="tablecon.cpp">
+      <Filter>Source Files\Table</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +102,9 @@
     </ClInclude>
     <ClInclude Include="week.h">
       <Filter>Source Files\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="table.h">
+      <Filter>Source Files\Table</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
