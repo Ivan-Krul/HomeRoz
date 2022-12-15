@@ -45,6 +45,15 @@
     <Filter Include="Source Files\TableRend">
       <UniqueIdentifier>{e4afe1c6-7966-4c5d-bc6c-b45af1d58341}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Table\ModTable">
+      <UniqueIdentifier>{6fec8d91-028c-4924-82b6-d6a5349e9270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Table\SubFileTable">
+      <UniqueIdentifier>{4d8425d2-6e06-4959-99fb-fa0a75c3a646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Table\SubInputTable">
+      <UniqueIdentifier>{3b53b1c4-8def-4b16-ab83-47e94c7c6c39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -70,6 +79,15 @@
     </ClCompile>
     <ClCompile Include="tablecon.cpp">
       <Filter>Source Files\Table</Filter>
+    </ClCompile>
+    <ClCompile Include="modtable.cpp">
+      <Filter>Source Files\Table\ModTable</Filter>
+    </ClCompile>
+    <ClCompile Include="subfiletable.cpp">
+      <Filter>Source Files\Table\SubFileTable</Filter>
+    </ClCompile>
+    <ClCompile Include="subinputtable.cpp">
+      <Filter>Source Files\Table\SubInputTable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +123,15 @@
     </ClInclude>
     <ClInclude Include="table.h">
       <Filter>Source Files\Table</Filter>
+    </ClInclude>
+    <ClInclude Include="modtable.h">
+      <Filter>Source Files\Table\ModTable</Filter>
+    </ClInclude>
+    <ClInclude Include="subfiletable.h">
+      <Filter>Source Files\Table\SubFileTable</Filter>
+    </ClInclude>
+    <ClInclude Include="subinputtable.h">
+      <Filter>Source Files\Table\SubInputTable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

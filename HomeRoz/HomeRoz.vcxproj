@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -133,6 +133,9 @@
     <ClCompile Include="homeworkselect.cpp" />
     <ClCompile Include="lesson.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="modtable.cpp" />
+    <ClCompile Include="subfiletable.cpp" />
+    <ClCompile Include="subinputtable.cpp" />
     <ClCompile Include="table.cpp" />
     <ClCompile Include="tablecon.cpp" />
   </ItemGroup>
@@ -146,6 +149,9 @@
     <ClInclude Include="iinputmodule.h" />
     <ClInclude Include="irendermodule.h" />
     <ClInclude Include="lesson.h" />
+    <ClInclude Include="modtable.h" />
+    <ClInclude Include="subfiletable.h" />
+    <ClInclude Include="subinputtable.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="week.h" />
   </ItemGroup>
