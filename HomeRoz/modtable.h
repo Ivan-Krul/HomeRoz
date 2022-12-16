@@ -4,7 +4,7 @@ namespace Table
 {
 	class ModTable
 	{
-		HomeworkSelect mHWSelect;
-
+		HomeworkSelect _hw_select;
+		// TODO: Made methodes and their realisation
 	};
 }

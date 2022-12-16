@@ -54,6 +54,12 @@
     <Filter Include="Source Files\Table\SubInputTable">
       <UniqueIdentifier>{3b53b1c4-8def-4b16-ab83-47e94c7c6c39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Table\SubCurMgrTable">
+      <UniqueIdentifier>{673c531f-d05f-421d-8afb-e7549ef1859a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Table\DefineTable">
+      <UniqueIdentifier>{8249f692-d0ec-4a53-bcdb-ec5bedfded8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="subinputtable.cpp">
       <Filter>Source Files\Table\SubInputTable</Filter>
+    </ClCompile>
+    <ClCompile Include="subcurmgrtable.cpp">
+      <Filter>Source Files\Table\SubCurMgrTable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +141,12 @@
     </ClInclude>
     <ClInclude Include="subinputtable.h">
       <Filter>Source Files\Table\SubInputTable</Filter>
+    </ClInclude>
+    <ClInclude Include="subcurmgrtable.h">
+      <Filter>Source Files\Table\SubCurMgrTable</Filter>
+    </ClInclude>
+    <ClInclude Include="define_table.h">
+      <Filter>Source Files\Table\DefineTable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

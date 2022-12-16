@@ -134,6 +134,7 @@
     <ClCompile Include="lesson.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="modtable.cpp" />
+    <ClCompile Include="subcurmgrtable.cpp" />
     <ClCompile Include="subfiletable.cpp" />
     <ClCompile Include="subinputtable.cpp" />
     <ClCompile Include="table.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
+    <ClInclude Include="define_table.h" />
     <ClInclude Include="ext\Window.h" />
     <ClInclude Include="ext\WindowsLib.h" />
     <ClInclude Include="homework.h" />
@@ -150,6 +152,7 @@
     <ClInclude Include="irendermodule.h" />
     <ClInclude Include="lesson.h" />
     <ClInclude Include="modtable.h" />
+    <ClInclude Include="subcurmgrtable.h" />
     <ClInclude Include="subfiletable.h" />
     <ClInclude Include="subinputtable.h" />
     <ClInclude Include="table.h" />
