@@ -142,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
-    <ClInclude Include="define_table.h" />
     <ClInclude Include="ext\Window.h" />
     <ClInclude Include="ext\WindowsLib.h" />
     <ClInclude Include="homework.h" />

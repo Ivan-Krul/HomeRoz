@@ -1,26 +1,37 @@
 #pragma once
-#include "define_table.h"
 #include "homeworkselect.h"
-namespace Table
+namespace table
 {
+	enum class LineChooser
+	{
+		home = 0,
+		lesson_name,
+		link,
+		weeks,
+		homework_context,
+		from_date,
+		to_date,
+		done
+	};
 	class SubCurMgrTable
 	{
-		Size _max_x = 0;
-		Size _max_lesson_y = 0;
-		Size _max_homework_y = 0;
-		Size _pos_x = 0;
-		Size _pos_lesson_y = 0;
-		Size _pos_homework_y = 0;
-		Size _input_pos = 0;
+		typedef unsigned short ushort;
+		ushort max_x_ = 0;
+		ushort pos_x_ = 0;
+		ushort max_lesson_y_ = 0;
+		ushort max_homework_y_ = 0;
+		ushort pos_homework_y_ = 0;
+		ushort pos_lesson_y_ = 0;
+		bool is_hwselect_mode_ = false;
 	public:
 		LineChooser ConvertXToLnChs();
-		Size getPosX();
-		Size getPosY();
+		unsigned short getPosX();
+		unsigned short getPosY();
 		void IncX();
 		void DecX();
 		void IncY();
 		void DecY();
-		void CalculateMaxSizes(HomeworkSelect hw_select_);
-		bool CheckNeedUpdateMax(HomeworkSelect hw_select_);
+		void SwitchHWSelect();
+		void WriteMaxSizes(HomeworkSelect hw_select);
 	};
 }

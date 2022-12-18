@@ -1,49 +1,60 @@
 #include "subcurmgrtable.h"
-namespace Table
+namespace table
 {
 	LineChooser SubCurMgrTable::ConvertXToLnChs()
 	{
 		return LineChooser();
 	}
-	Size SubCurMgrTable::getPosX()
+	unsigned short SubCurMgrTable::getPosX()
 	{
-		return _pos_x;
+		return pos_x_;
 	}
-	Size SubCurMgrTable::getPosY()
+	unsigned short SubCurMgrTable::getPosY()
 	{
-		return _pos_lesson_y;
+		return is_hwselect_mode_ ? pos_homework_y_ : pos_lesson_y_;
 	}
 	void SubCurMgrTable::IncX()
 	{
-		if (_pos_x + 1 < _max_x)
-			_pos_x++;
+		if (pos_x_ + 1 <= max_x_)
+			pos_x_++;
 	}
 	void SubCurMgrTable::DecX()
 	{
-		if (_pos_x != 0)
-			_pos_x--;
+		if (pos_x_ != 0)
+			pos_x_--;
 	}
 	void SubCurMgrTable::IncY()
 	{
-		if (_pos_lesson_y + 1 < _max_lesson_y)
-			_pos_lesson_y++;
+		if (is_hwselect_mode_)
+			if (pos_homework_y_ + 1 <= max_homework_y_)
+				pos_homework_y_++;
+		else
+			if (pos_lesson_y_ + 1 <= max_lesson_y_)
+				pos_lesson_y_++;
 	}
 	void SubCurMgrTable::DecY()
 	{
-		if (_pos_lesson_y != 0)
-			_pos_lesson_y--;
+		if (is_hwselect_mode_)
+			if (pos_homework_y_ - 1 != 0)
+				pos_homework_y_--;
+		else
+			if (pos_lesson_y_ - 1 != 0)
+				pos_lesson_y_--;
 	}
-	void SubCurMgrTable::CalculateMaxSizes(HomeworkSelect hw_select_)
+	void SubCurMgrTable::SwitchHWSelect()
 	{
-		// TODO: Need made a realisation for calculation max size
+		is_hwselect_mode_ = !is_hwselect_mode_;
 	}
-	bool SubCurMgrTable::CheckNeedUpdateMax(HomeworkSelect hw_select_)
+	void SubCurMgrTable::WriteMaxSizes(HomeworkSelect hw_select)
 	{
-		auto lesson_list = hw_select_.getLessonList();
-		auto lesson = lesson_list.begin();
-		Size y = 0;
-		for ((lesson,y); lesson != lesson_list.end() && y != _pos_lesson_y; (lesson++,y++));
-		return hw_select_.getHomeworkList(*lesson).size() != 0;
+		auto lessons = hw_select.getLessonList();
+		if (!(max_lesson_y_ = lessons.size()))
+			return;
+		auto lesson = lessons.begin();
+		ushort y = 0;
+		for ((lesson, y); lesson != lessons.end() && y != pos_homework_y_; (y++, lesson++));
+		auto homeworks = hw_select.getHomeworkList(*lesson);
+		max_homework_y_ = homeworks.size();
 	}
 }
 

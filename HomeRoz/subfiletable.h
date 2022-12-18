@@ -1,5 +1,5 @@
 #pragma once
-namespace Table
+namespace table
 {
 	class SubFileTable
 	{

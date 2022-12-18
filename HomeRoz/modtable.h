@@ -1,6 +1,6 @@
 #pragma once
 #include "homeworkselect.h"
-namespace Table
+namespace table
 {
 	class ModTable
 	{
