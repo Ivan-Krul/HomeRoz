@@ -1,5 +1,12 @@
 #include "homemgr.h"
 
+bool HomeMGR::CheckHomework_(size_t lesson_index, size_t homework_index)
+{
+	if (lesson_index < SizeLessons())
+		return homework_index < SizeHomeworks(lesson_index);
+	return false;
+}
+
 size_t HomeMGR::SizeLessons()
 {
 	return lessons_.size();
@@ -19,58 +26,85 @@ Lesson* HomeMGR::GetLesson(size_t index)
 
 Homework* HomeMGR::GetHomework(size_t lesson_index, size_t homework_index)
 {
-	if (lesson_index < SizeLessons())
-		if (homework_index < SizeHomeworks(lesson_index))
-			return &homeworks_[lesson_index][homework_index];
+	if (CheckHomework_(lesson_index,homework_index))
+		return &homeworks_[lesson_index][homework_index];
 	return nullptr;
 }
 
 void HomeMGR::PushLesson()
 {
 	Lesson lesson;
+	std::vector<Homework> homeworks;
 	lessons_.push_back(lesson);
+	homeworks_.push_back(homeworks);
 }
 
 void HomeMGR::PushHomework(size_t lesson_index)
 {
+	Homework homework;
+	if (lesson_index < SizeLessons())
+		homeworks_[lesson_index].push_back(homework);
 }
 
-void HomeMGR::PopLesson(size_t index)
+bool HomeMGR::PopLesson(size_t index)
 {
+	if (!(index < SizeLessons()))
+		return false;
+	lessons_.erase(lessons_.begin() + index);
+	homeworks_.erase(homeworks_.begin() + index);
+	return true;	
 }
 
-void HomeMGR::PopHomework(size_t lesson_index, size_t homework_index)
+bool HomeMGR::PopHomework(size_t lesson_index, size_t homework_index)
 {
+	if (!CheckHomework_(lesson_index, homework_index))
+		return false;
+	homeworks_[lesson_index].erase(homeworks_[lesson_index].begin() + homework_index);
+	return true;
 }
 
-void HomeMGR::SetLesson(size_t index, Lesson lesson)
+bool HomeMGR::SetLesson(size_t index, Lesson lesson)
 {
+	if(!(index < SizeLessons()))
+		return false;
+	lessons_[index] = lesson;
+	return true;
 }
 
-void HomeMGR::SetHomework(size_t lesson_index, size_t homework_index, Homework homework)
+bool HomeMGR::SetHomework(size_t lesson_index, size_t homework_index, Homework homework)
 {
+	if (!CheckHomework_(lesson_index, homework_index))
+		return false;
+	// UNDONE: made a realisation if it's true
+	return true;
 }
 
-void HomeMGR::SetLessonName(size_t lesson_index, std::string name)
+bool HomeMGR::SetLessonName(size_t lesson_index, std::string name)
 {
+	return false;
 }
 
-void HomeMGR::SetLessonLink(size_t lesson_index, std::string link)
+bool HomeMGR::SetLessonLink(size_t lesson_index, std::string link)
 {
+	return false;
 }
 
-void HomeMGR::SetHomeworkContext(size_t lesson_index, size_t homework_index, std::string context)
+bool HomeMGR::SetHomeworkContext(size_t lesson_index, size_t homework_index, std::string context)
 {
+	return false;
 }
 
-void HomeMGR::SetHomeworkDateFrom(size_t lesson_index, size_t homework_index, date_week::Date date)
+bool HomeMGR::SetHomeworkDateFrom(size_t lesson_index, size_t homework_index, date_week::Date date)
 {
+	return false;
 }
 
-void HomeMGR::SetHomeworkDateTo(size_t lesson_index, size_t homework_index, date_week::Date date)
+bool HomeMGR::SetHomeworkDateTo(size_t lesson_index, size_t homework_index, date_week::Date date)
 {
+	return false;
 }
 
-void HomeMGR::SetHomeworkDone(size_t lesson_index, size_t homework_index, bool done)
+bool HomeMGR::SetHomeworkDone(size_t lesson_index, size_t homework_index, bool done)
 {
+	return false;
 }
