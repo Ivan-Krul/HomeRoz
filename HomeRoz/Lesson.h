@@ -1,22 +1,22 @@
 #pragma once
-#include "week.h"
 #include <string>
 #include <vector>
+#include "week.h"
 class Lesson
 {
 	std::string name_;
 	std::string link_;
-	std::vector<Week> weeks_;
+	std::vector<date_week::Week> weeks_;
 public:
-	std::vector<Week>::iterator BeginWeeks();
-	std::vector<Week>::iterator EndWeeks();
+	std::vector<date_week::Week>::iterator BeginWeeks();
+	std::vector<date_week::Week>::iterator EndWeeks();
 	size_t SizeWeek();
-	Week& GetWeek(size_t index);
+	date_week::Week& GetWeek(size_t index);
 	std::string GetName();
 	std::string GetLink();
 	void SetName(std::string name);
 	void SetLink(std::string link);
-	void PushWeek(Week week);
-	void PopWeek(std::vector<Week>::iterator iter);
+	void PushWeek(date_week::Week week);
+	void PopWeek(std::vector<date_week::Week>::iterator iter);
 };
 
