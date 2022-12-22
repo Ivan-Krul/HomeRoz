@@ -24,38 +24,8 @@
     <Filter Include="Source Files\Lesson">
       <UniqueIdentifier>{d178920f-6344-45af-8962-ccb9b30726b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\IFormatToString">
-      <UniqueIdentifier>{c50e276d-d1b2-487b-8e55-e55d7b74d16a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\HomeworkSelect">
-      <UniqueIdentifier>{c1fc184c-2474-4e20-8e3d-01296fc710ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\IInputModule">
-      <UniqueIdentifier>{2f5b24bd-2663-4975-b4a8-97dfca65c224}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\IRenderModule">
-      <UniqueIdentifier>{364cbd7d-ffb0-494d-ac02-34f7032503eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Table">
-      <UniqueIdentifier>{d270c0fd-1626-4637-8d03-09d143a2aa60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TableInp">
-      <UniqueIdentifier>{c00739f8-b143-4d65-ae74-5864aac652e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TableRend">
-      <UniqueIdentifier>{e4afe1c6-7966-4c5d-bc6c-b45af1d58341}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Table\ModTable">
-      <UniqueIdentifier>{6fec8d91-028c-4924-82b6-d6a5349e9270}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Table\SubFileTable">
-      <UniqueIdentifier>{4d8425d2-6e06-4959-99fb-fa0a75c3a646}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Table\SubInputTable">
-      <UniqueIdentifier>{3b53b1c4-8def-4b16-ab83-47e94c7c6c39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Table\SubCurMgrTable">
-      <UniqueIdentifier>{673c531f-d05f-421d-8afb-e7549ef1859a}</UniqueIdentifier>
+    <Filter Include="Source Files\HomeMGR">
+      <UniqueIdentifier>{d6c8c6d5-d1e3-48fb-85f3-1744726f72ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -74,26 +44,8 @@
     <ClCompile Include="lesson.cpp">
       <Filter>Source Files\Lesson</Filter>
     </ClCompile>
-    <ClCompile Include="homeworkselect.cpp">
-      <Filter>Source Files\HomeworkSelect</Filter>
-    </ClCompile>
-    <ClCompile Include="table.cpp">
-      <Filter>Source Files\Table</Filter>
-    </ClCompile>
-    <ClCompile Include="tablecon.cpp">
-      <Filter>Source Files\Table</Filter>
-    </ClCompile>
-    <ClCompile Include="modtable.cpp">
-      <Filter>Source Files\Table\ModTable</Filter>
-    </ClCompile>
-    <ClCompile Include="subfiletable.cpp">
-      <Filter>Source Files\Table\SubFileTable</Filter>
-    </ClCompile>
-    <ClCompile Include="subinputtable.cpp">
-      <Filter>Source Files\Table\SubInputTable</Filter>
-    </ClCompile>
-    <ClCompile Include="subcurmgrtable.cpp">
-      <Filter>Source Files\Table\SubCurMgrTable</Filter>
+    <ClCompile Include="homemgr.cpp">
+      <Filter>Source Files\HomeMGR</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,38 +61,14 @@
     <ClInclude Include="homework.h">
       <Filter>Source Files\Homework</Filter>
     </ClInclude>
-    <ClInclude Include="iformattostring.h">
-      <Filter>Source Files\IFormatToString</Filter>
-    </ClInclude>
     <ClInclude Include="lesson.h">
       <Filter>Source Files\Lesson</Filter>
-    </ClInclude>
-    <ClInclude Include="homeworkselect.h">
-      <Filter>Source Files\HomeworkSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="iinputmodule.h">
-      <Filter>Source Files\IInputModule</Filter>
-    </ClInclude>
-    <ClInclude Include="irendermodule.h">
-      <Filter>Source Files\IRenderModule</Filter>
     </ClInclude>
     <ClInclude Include="week.h">
       <Filter>Source Files\Date</Filter>
     </ClInclude>
-    <ClInclude Include="table.h">
-      <Filter>Source Files\Table</Filter>
-    </ClInclude>
-    <ClInclude Include="modtable.h">
-      <Filter>Source Files\Table\ModTable</Filter>
-    </ClInclude>
-    <ClInclude Include="subfiletable.h">
-      <Filter>Source Files\Table\SubFileTable</Filter>
-    </ClInclude>
-    <ClInclude Include="subinputtable.h">
-      <Filter>Source Files\Table\SubInputTable</Filter>
-    </ClInclude>
-    <ClInclude Include="subcurmgrtable.h">
-      <Filter>Source Files\Table\SubCurMgrTable</Filter>
+    <ClInclude Include="homemgr.h">
+      <Filter>Source Files\HomeMGR</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

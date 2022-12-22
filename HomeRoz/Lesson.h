@@ -1,23 +1,22 @@
 #pragma once
 #include "week.h"
-#include "iformattostring.h"
 #include <string>
 #include <vector>
-class Lesson : public IFormatToString
+class Lesson
 {
-	std::string mName;
-	std::string mLink;
-	std::vector<Week> mWeeks;
+	std::string name_;
+	std::string link_;
+	std::vector<Week> weeks_;
 public:
 	std::vector<Week>::iterator BeginWeeks();
 	std::vector<Week>::iterator EndWeeks();
 	size_t SizeWeek();
-	std::string getName();
-	std::string getLink();
-	void setName(std::string name);
-	void setLink(std::string link);
+	Week& GetWeek(size_t index);
+	std::string GetName();
+	std::string GetLink();
+	void SetName(std::string name);
+	void SetLink(std::string link);
 	void PushWeek(Week week);
 	void PopWeek(std::vector<Week>::iterator iter);
-	std::string FormatToString();
 };
 

@@ -1,27 +1,24 @@
 #pragma once
 #include "date.h"
 #include "lesson.h"
-#include "iformattostring.h"
 #include <string>
-class Homework : public IFormatToString
+class Homework
 {
-	bool mDone;
-	Lesson* mpLesson;
-	Date mFromDate;
-	Date mToDate;
-	std::string mContext;
+	bool done_;
+	Lesson* plesson_;
+	Date from_date_;
+	Date to_date_;
+	std::string context_;
 public:
-	std::string getContex();
-	bool getDone();
-	Lesson* getLesson();
-	Date getToDate();
-	Date getFromDate();
-	void setContex(std::string context);
-	void setLesson(Lesson* pLesson);
-	void setToDate(Date toDate);
-	void setFromDate(Date fromDate);
+	std::string GetContex();
+	bool GetDone();
+	Lesson* GetLesson();
+	Date GetToDate();
+	Date GetFromDate();
+	void SetContex(std::string context);
+	void SetLesson(Lesson* pLesson);
+	void SetToDate(Date toDate);
+	void SetFromDate(Date fromDate);
 	void MarkDone();
-	Homework& operator=(const Homework& some);
-	std::string FormatToString();
 };
 

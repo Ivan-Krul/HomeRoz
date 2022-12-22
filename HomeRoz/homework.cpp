@@ -1,62 +1,50 @@
 #include "homework.h"
-std::string Homework::getContex()
+std::string Homework::GetContex()
 {
-	return mContext;
+	return context_;
 }
-bool Homework::getDone()
+bool Homework::GetDone()
 {
-	return mDone;
+	return done_;
 }
-Lesson* Homework::getLesson()
+Lesson* Homework::GetLesson()
 {
-	return mpLesson;
+	return plesson_;
 }
-Date Homework::getToDate()
+Date Homework::GetToDate()
 {
-	return mToDate;
+	return to_date_;
 }
-Date Homework::getFromDate()
+Date Homework::GetFromDate()
 {
-	return mFromDate;
+	return from_date_;
 }
-void Homework::setContex(std::string context)
+void Homework::SetContex(std::string context)
 {
-	mContext = context;
+	context_ = context;
 }
-void Homework::setLesson(Lesson* pLesson)
+void Homework::SetLesson(Lesson* pLesson)
 {
-	mpLesson = pLesson;
+	plesson_ = pLesson;
 }
-void Homework::setToDate(Date toDate)
+void Homework::SetToDate(Date toDate)
 {
-	mToDate = toDate;
+	to_date_ = toDate;
 }
-void Homework::setFromDate(Date fromDate)
+void Homework::SetFromDate(Date fromDate)
 {
-	mFromDate = fromDate;
+	from_date_ = fromDate;
 }
 void Homework::MarkDone()
 {
-	mDone = !mDone;
+	done_ = !done_;
 }
 Homework& Homework::operator=(const Homework& some)
 {
-	mContext = some.mContext;
-	mpLesson = some.mpLesson;
-	mFromDate = some.mFromDate;
-	mToDate = some.mToDate;
-	mDone = some.mDone;
+	context_ = some.context_;
+	plesson_ = some.plesson_;
+	from_date_ = some.from_date_;
+	to_date_ = some.to_date_;
+	done_ = some.done_;
 	return *this;
-}
-std::string Homework::FormatToString()
-{
-	std::string string;
-	string = mContext;
-	string += " | ";
-	string += mFromDate.FormatToString();
-	string += " | ";
-	string += mToDate.FormatToString();
-	string += " | ";
-	string += mDone ? "done" : "dont";
-	return string;
 }

@@ -1,55 +1,41 @@
 #include "lesson.h"
 std::vector<Week>::iterator Lesson::BeginWeeks()
 {
-	return mWeeks.begin();
+	return weeks_.begin();
 }
 std::vector<Week>::iterator Lesson::EndWeeks()
 {
-	return mWeeks.end();
+	return weeks_.end();
 }
 size_t Lesson::SizeWeek()
 {
-	return mWeeks.size();
+	return weeks_.size();
 }
-std::string Lesson::getName()
+Week& Lesson::GetWeek(size_t index)
 {
-	return mName;
+	return weeks_[index];
 }
-std::string Lesson::getLink()
+std::string Lesson::GetName()
 {
-	return mLink;
+	return name_;
 }
-void Lesson::setName(std::string name)
+std::string Lesson::GetLink()
 {
-	mName = name;
+	return link_;
 }
-void Lesson::setLink(std::string link)
+void Lesson::SetName(std::string name)
 {
-	mLink = link;
+	name_ = name;
+}
+void Lesson::SetLink(std::string link)
+{
+	link_ = link;
 }
 void Lesson::PushWeek(Week week)
 {
-	mWeeks.push_back(week);
+	weeks_.push_back(week);
 }
 void Lesson::PopWeek(std::vector<Week>::iterator iter)
 {
-	mWeeks.erase(iter);
-}
-std::string Lesson::FormatToString()
-{
-	std::string string;
-	string = mName;
-	string += ' ';
-	string += mLink.empty() ? "    " : "link";
-	string += " (";
-	if (!(mWeeks.size() < 1)) {
-		string += WeekToString(mWeeks[0]);
-		for (int w = 0; w < mWeeks.size() - 1; w++)
-		{
-			string += '/';
-			string += WeekToString(mWeeks[w + 1]);
-		}
-	}
-	string += ")";
-	return string;
+	weeks_.erase(iter);
 }

@@ -56,15 +56,15 @@ std::string Date::ConvertMonthToString()
 		default:						return "Def";
 	}
 }
-short Date::getDay()
+short Date::GetDay()
 {
 	return mDay;
 }
-Date::Month Date::getMonth()
+Date::Month Date::GetMonth()
 {
 	return mMonth;
 }
-void Date::setDay(short day)
+void Date::SetDay(short day)
 {
 	if (mDay >= ConvertMonthDays(mMonth))
 		day = ConvertMonthDays(mMonth) - 1;
@@ -73,11 +73,11 @@ void Date::setDay(short day)
 	else
 		mDay = day;	
 }
-void Date::setMonth(Month month)
+void Date::SetMonth(Month month)
 {
 	mMonth = month;
 }
-void Date::setMonth(short month)
+void Date::SetMonth(short month)
 {
 	if (month >= 12)
 		mMonth = Month::december;
