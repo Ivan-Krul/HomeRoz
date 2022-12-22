@@ -14,6 +14,7 @@ namespace date_week
 		saturday,
 		sunday
 	};
+
 	inline Week WeekSetCurrentTime()
 	{
 		time_t now = time(0);

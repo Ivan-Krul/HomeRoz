@@ -2,26 +2,33 @@
 
 size_t HomeMGR::SizeLessons()
 {
-	return size_t();
+	return lessons_.size();
 }
 
 size_t HomeMGR::SizeHomeworks(size_t lesson_index)
 {
-	return size_t();
+	return homeworks_[lesson_index].size();
 }
 
-Lesson HomeMGR::GetLesson(size_t index)
+Lesson* HomeMGR::GetLesson(size_t index)
 {
-	return Lesson();
+	if(index < SizeLessons())
+		return &lessons_[index];
+	return nullptr;
 }
 
-Homework HomeMGR::GetHomework(size_t lesson_index, size_t homework_index)
+Homework* HomeMGR::GetHomework(size_t lesson_index, size_t homework_index)
 {
-	return Homework();
+	if (lesson_index < SizeLessons())
+		if (homework_index < SizeHomeworks(lesson_index))
+			return &homeworks_[lesson_index][homework_index];
+	return nullptr;
 }
 
 void HomeMGR::PushLesson()
 {
+	Lesson lesson;
+	lessons_.push_back(lesson);
 }
 
 void HomeMGR::PushHomework(size_t lesson_index)

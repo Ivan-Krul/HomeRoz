@@ -8,6 +8,7 @@ class Lesson
 	std::string link_;
 	std::vector<date_week::Week> weeks_;
 public:
+	Lesson(std::string name = "", std::string link = "", std::vector<date_week::Week> weeks = {});
 	std::vector<date_week::Week>::iterator BeginWeeks();
 	std::vector<date_week::Week>::iterator EndWeeks();
 	size_t SizeWeek();

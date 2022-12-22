@@ -9,8 +9,8 @@ class HomeMGR
 public:
 	size_t SizeLessons();
 	size_t SizeHomeworks(size_t lesson_index);
-	Lesson GetLesson(size_t index);
-	Homework GetHomework(size_t lesson_index, size_t homework_index);
+	Lesson* GetLesson(size_t index);
+	Homework* GetHomework(size_t lesson_index, size_t homework_index);
 	void PushLesson();
 	void PushHomework(size_t lesson_index);
 	void PopLesson(size_t index);

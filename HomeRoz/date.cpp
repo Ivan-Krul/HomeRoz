@@ -5,11 +5,13 @@ date_week::Date::Date(Month month, short day)
 	mMonth = month;
 	mDay = day;
 }
+
 date_week::Date::Date(short month, short day)
 {
 	mMonth = static_cast<Month>(month);
 	mDay = day;
 }
+
 short date_week::Date::ConvertDateToDays()
 {
 	short days = 0;
@@ -18,6 +20,7 @@ short date_week::Date::ConvertDateToDays()
 	days += mDay;
 	return days;
 }
+
 short date_week::Date::ConvertMonthDays(Month month)
 {
 	switch (month)
@@ -37,6 +40,7 @@ short date_week::Date::ConvertMonthDays(Month month)
 		default:						return 30;
 	}
 }
+
 std::string date_week::Date::ConvertMonthToString()
 {
 	switch (mMonth)
@@ -56,14 +60,17 @@ std::string date_week::Date::ConvertMonthToString()
 		default:						return "Def";
 	}
 }
+
 short date_week::Date::GetDay()
 {
 	return mDay;
 }
+
 date_week::Date::Month date_week::Date::GetMonth()
 {
 	return mMonth;
 }
+
 void date_week::Date::SetDay(short day)
 {
 	if (mDay >= ConvertMonthDays(mMonth))
@@ -73,10 +80,12 @@ void date_week::Date::SetDay(short day)
 	else
 		mDay = day;	
 }
+
 void date_week::Date::SetMonth(Month month)
 {
 	mMonth = month;
 }
+
 void date_week::Date::SetMonth(short month)
 {
 	if (month >= 12)
@@ -86,6 +95,7 @@ void date_week::Date::SetMonth(short month)
 	else
 		mMonth = static_cast<Month>(month);
 }
+
 void date_week::Date::SetCurrentTime()
 {
 	time_t now = time(0);
@@ -93,6 +103,7 @@ void date_week::Date::SetCurrentTime()
 	mMonth = static_cast<Month>(gmtm->tm_mon);
 	mDay = gmtm->tm_mday;
 }
+
 date_week::Date& date_week::Date::operator=(const Date& some)
 {
 	mDay = some.mDay;

@@ -10,6 +10,7 @@ class Homework
 	date_week::Date to_date_;
 	std::string context_;
 public:
+	Homework(std::string context = "", date_week::Date from = date_week::Date(0, 0), date_week::Date to = date_week::Date(0, 0), bool done = false);
 	std::string GetContex();
 	bool GetDone();
 	//Lesson* GetLesson();
