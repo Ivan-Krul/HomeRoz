@@ -79,8 +79,14 @@
     <ClInclude Include="homemgr.h">
       <Filter>Source Files\HomeMGR</Filter>
     </ClInclude>
+    <ClInclude Include="irender.h">
+      <Filter>Source Files\IRender</Filter>
+    </ClInclude>
     <ClInclude Include="iinput.h">
       <Filter>Source Files\IInput</Filter>
+    </ClInclude>
+    <ClInclude Include="ifiler.h">
+      <Filter>Source Files\IFiler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
