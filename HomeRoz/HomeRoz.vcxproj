@@ -140,6 +140,7 @@
     <ClInclude Include="ext\WindowsLib.h" />
     <ClInclude Include="homemgr.h" />
     <ClInclude Include="homework.h" />
+    <ClInclude Include="iinput.h" />
     <ClInclude Include="lesson.h" />
     <ClInclude Include="week.h" />
   </ItemGroup>

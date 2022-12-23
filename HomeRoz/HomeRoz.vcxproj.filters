@@ -27,6 +27,15 @@
     <Filter Include="Source Files\HomeMGR">
       <UniqueIdentifier>{d6c8c6d5-d1e3-48fb-85f3-1744726f72ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\IInput">
+      <UniqueIdentifier>{ea2999c0-4ed6-4a5c-a4fe-3eae90d6ee74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IRender">
+      <UniqueIdentifier>{a545c58e-94b4-472d-ace1-8d41c2dda5ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IFiler">
+      <UniqueIdentifier>{ef797caf-2931-47be-b7fe-7de90955ca0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +78,9 @@
     </ClInclude>
     <ClInclude Include="homemgr.h">
       <Filter>Source Files\HomeMGR</Filter>
+    </ClInclude>
+    <ClInclude Include="iinput.h">
+      <Filter>Source Files\IInput</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
