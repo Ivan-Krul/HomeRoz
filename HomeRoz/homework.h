@@ -20,6 +20,6 @@ public:
 	//void SetLesson(Lesson* pLesson);
 	void SetToDate(date_week::Date toDate);
 	void SetFromDate(date_week::Date fromDate);
-	void MarkDone();
+	void SetDone(bool done);
 };
 

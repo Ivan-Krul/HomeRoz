@@ -14,7 +14,8 @@ public:
 	Lesson* GetLesson(size_t index);
 	Homework* GetHomework(size_t lesson_index, size_t homework_index);
 	void PushLesson();
-	void PushHomework(size_t lesson_index);
+	void Clear();
+	bool PushHomework(size_t lesson_index);
 	bool PopLesson(size_t index);
 	bool PopHomework(size_t lesson_index, size_t homework_index);
 	bool SetLesson(size_t index, Lesson lesson);

@@ -39,11 +39,19 @@ void HomeMGR::PushLesson()
 	homeworks_.push_back(homeworks);
 }
 
-void HomeMGR::PushHomework(size_t lesson_index)
+void HomeMGR::Clear()
+{
+	lessons_.clear();
+	homeworks_.clear();
+}
+
+bool HomeMGR::PushHomework(size_t lesson_index)
 {
 	Homework homework;
-	if (lesson_index < SizeLessons())
-		homeworks_[lesson_index].push_back(homework);
+	if (!(lesson_index < SizeLessons()))
+		return false;
+	homeworks_[lesson_index].push_back(homework);
+	return true;
 }
 
 bool HomeMGR::PopLesson(size_t index)
@@ -75,36 +83,54 @@ bool HomeMGR::SetHomework(size_t lesson_index, size_t homework_index, Homework h
 {
 	if (!CheckHomework_(lesson_index, homework_index))
 		return false;
-	// UNDONE: made a realisation if it's true
+	homeworks_[lesson_index][homework_index] = homework;
 	return true;
 }
 
 bool HomeMGR::SetLessonName(size_t lesson_index, std::string name)
 {
-	return false;
+	if (!(lesson_index < SizeLessons()))
+		return false;
+	lessons_[lesson_index].SetName(name);
+	return true;
 }
 
 bool HomeMGR::SetLessonLink(size_t lesson_index, std::string link)
 {
-	return false;
+	if(!(lesson_index < SizeLessons()))
+		return false;
+	lessons_[lesson_index].SetLink(link);
+	return true;
 }
 
 bool HomeMGR::SetHomeworkContext(size_t lesson_index, size_t homework_index, std::string context)
 {
-	return false;
+	if(!(CheckHomework_(lesson_index, homework_index)))
+		return false;
+	homeworks_[lesson_index][homework_index].SetContex(context);
+	return true;
 }
 
 bool HomeMGR::SetHomeworkDateFrom(size_t lesson_index, size_t homework_index, date_week::Date date)
 {
-	return false;
+	if(!(CheckHomework_(lesson_index, homework_index)))
+		return false;
+	homeworks_[lesson_index][homework_index].SetFromDate(date);
+	return true;
 }
 
 bool HomeMGR::SetHomeworkDateTo(size_t lesson_index, size_t homework_index, date_week::Date date)
 {
-	return false;
+	if (!(CheckHomework_(lesson_index, homework_index)))
+		return false;
+	homeworks_[lesson_index][homework_index].SetFromDate(date);
+	return true;
 }
 
 bool HomeMGR::SetHomeworkDone(size_t lesson_index, size_t homework_index, bool done)
 {
-	return false;
+	if (!(CheckHomework_(lesson_index, homework_index)))
+		return false;
+	homeworks_[lesson_index][homework_index].SetDone(done);
+	return true;
 }

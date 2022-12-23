@@ -52,7 +52,8 @@ void Homework::SetFromDate(date_week::Date fromDate)
 	from_date_ = fromDate;
 }
 
-void Homework::MarkDone()
+void Homework::SetDone(bool done)
 {
-	done_ = !done_;
+	done_ = done;
 }
+
