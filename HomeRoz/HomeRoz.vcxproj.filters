@@ -36,6 +36,9 @@
     <Filter Include="Source Files\IFiler">
       <UniqueIdentifier>{ef797caf-2931-47be-b7fe-7de90955ca0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ConsoleRender">
+      <UniqueIdentifier>{18c38910-cce5-4393-805c-e5d710aaad67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -55,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="homemgr.cpp">
       <Filter>Source Files\HomeMGR</Filter>
+    </ClCompile>
+    <ClCompile Include="console_render.cpp">
+      <Filter>Source Files\ConsoleRender</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +93,9 @@
     </ClInclude>
     <ClInclude Include="ifiler.h">
       <Filter>Source Files\IFiler</Filter>
+    </ClInclude>
+    <ClInclude Include="console_render.h">
+      <Filter>Source Files\ConsoleRender</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
