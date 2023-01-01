@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{266e6fb1-ed7a-4934-b4bf-84166d7ca269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Date">
+      <UniqueIdentifier>{2b02f0e1-f9b6-4c7d-a20f-251ba35c6a83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HomeMGR">
+      <UniqueIdentifier>{19978e55-d7e8-4587-89ec-22687f0752db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Homework">
+      <UniqueIdentifier>{1ba069f4-d1df-4dca-ba93-6c09e0d0d43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lesson">
+      <UniqueIdentifier>{d920d7cd-2e69-4035-8937-e6ab7e3ad052}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="date.cpp">
+      <Filter>Source Files\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="homemgr.cpp">
+      <Filter>Source Files\HomeMGR</Filter>
+    </ClCompile>
+    <ClCompile Include="homework.cpp">
+      <Filter>Source Files\Homework</Filter>
+    </ClCompile>
+    <ClCompile Include="lesson.cpp">
+      <Filter>Source Files\Lesson</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="date.h">
+      <Filter>Source Files\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="homemgr.h">
+      <Filter>Source Files\HomeMGR</Filter>
+    </ClInclude>
+    <ClInclude Include="homework.h">
+      <Filter>Source Files\Homework</Filter>
+    </ClInclude>
+    <ClInclude Include="lesson.h">
+      <Filter>Source Files\Lesson</Filter>
+    </ClInclude>
+    <ClInclude Include="week.h">
+      <Filter>Source Files\Date</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
