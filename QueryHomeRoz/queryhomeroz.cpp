@@ -102,16 +102,18 @@ namespace query_home_roz
 				mgr_.PopLesson(std::stoi(separated));
 				return cs_success_msg;
 			case TokenIndex::homework:
-				separated = additional_string_lib::SplitStr(query);
-				size_t indexH = std::stoi(separated);
-				separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
-				if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
 				{
-					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
-					mgr_.PopHomework(std::stoi(separated), indexH);
-					return cs_success_msg;
+					separated = additional_string_lib::SplitStr(query);
+					size_t indexH = std::stoi(separated);
+					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
+					if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
+					{
+						separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
+						mgr_.PopHomework(std::stoi(separated), indexH);
+						return cs_success_msg;
+					}
+					return cs_not_valid_token_msg;
 				}
-				return cs_not_valid_token_msg;
 			default:
 				return cs_not_valid_token_msg;
 		}
@@ -130,15 +132,17 @@ namespace query_home_roz
 					return OutputLesson_(*mgr_.GetLesson(std::stoi(separated)));
 				}
 			case TokenIndex::homework:
-				separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
-				size_t indexH = std::stoi(separated);
-				separated = additional_string_lib::SplitStr(query);  // OF HOMEWORK ... ()
-				if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
 				{
-					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
-					return OutputHomework_(*mgr_.GetHomework(std::stoi(separated), indexH));
+					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
+					size_t indexH = std::stoi(separated);
+					separated = additional_string_lib::SplitStr(query);  // OF HOMEWORK ... ()
+					if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
+					{
+						separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
+						return OutputHomework_(*mgr_.GetHomework(std::stoi(separated), indexH));
+					}
+					return cs_not_valid_token_msg;
 				}
-				return cs_not_valid_token_msg;
 			default:
 				return cs_not_valid_token_msg;
 		}
