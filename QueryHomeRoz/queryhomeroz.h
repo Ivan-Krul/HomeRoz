@@ -16,18 +16,22 @@ namespace query_home_roz
 		const static std::string cs_invalid_token_msg;
 		const static std::string cs_success_msg;
 		const static std::string cs_nothing_msg;
+		const static std::string cs_exception_msg;
 	private:
 		HomeMGR mgr_;
 	private:
 		TokenIndex SearchToken_(std::string str) const;
-		std::string ExecuteSizeOf_(std::string& query);
 		std::string OutputLesson_(Lesson lesson);
 		std::string OutputHomework_(Homework hw);
+		date_week::Week ConvertToWeek_(std::string str);
+		size_t SeparateNumber(std::string& query);
+	private:
+		std::string ExecuteSizeOf_(std::string& query);
 		std::string ExecuteCreate_(std::string& query);
 		std::string ExecuteErase_(std::string& query);
 		std::string ExecuteOutput_(std::string& query);
-		date_week::Week ConvertToWeek_(std::string str);
 		std::string ExecuteSetLesson_(std::string& query);
+		std::string ExecuteSetHomework_(std::string& query);
 	public:
 		std::string Query(std::string& query);
 	};
@@ -59,7 +63,8 @@ namespace query_home_roz
 	const std::string QueryHomeRoz::cs_invalid_token_msg = "INVALID QUERY TOKEN";
 	const std::string QueryHomeRoz::cs_success_msg = "SUCCESS";
 	const std::string QueryHomeRoz::cs_nothing_msg = "NOTHING";
-	
+	const std::string QueryHomeRoz::cs_exception_msg = "EXCEPTION";
+
 	const std::vector<std::string> QueryHomeRoz::cs_list_of_token_ =
 	{
 		// Definitions
@@ -87,3 +92,5 @@ namespace query_home_roz
 		"ERASE"
 	};
 }
+
+using QueryHR = query_home_roz::QueryHomeRoz;
