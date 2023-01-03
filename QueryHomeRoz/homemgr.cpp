@@ -35,7 +35,7 @@ namespace query_home_roz
 
 	void HomeMGR::PushLesson() noexcept
 	{
-		Lesson lesson;
+		Lesson lesson("New lesson");
 		std::vector<Homework> homeworks;
 		lessons_.push_back(lesson);
 		homeworks_.push_back(homeworks);
@@ -49,7 +49,7 @@ namespace query_home_roz
 
 	bool HomeMGR::PushHomework(const size_t lesson_index)
 	{
-		Homework homework;
+		Homework homework("New homework");
 		if (!(lesson_index < SizeLessons()))
 			return false;
 		homeworks_[lesson_index].push_back(homework);

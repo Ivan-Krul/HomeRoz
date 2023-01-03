@@ -2,34 +2,34 @@
 
 namespace additional_string_lib
 {
-	inline bool CanBeNumber(char sym)
+	bool CanBeNumber(char sym)
 	{
 		char expr = sym - '0';
 		return 0 <= expr && expr < 10;
 	}
-	inline bool CanBeBigLetter(const char sym)
+	bool CanBeBigLetter(const char sym)
 	{
 		char expr = sym - 'A';
 		return 0 <= expr && expr < 26;
 	}
-	inline bool CanBeSmallLetter(const char sym)
+	bool CanBeSmallLetter(const char sym)
 	{
 		char expr = sym - 'a';
 		return 0 <= expr && expr < 26;
 	}
-	inline bool CanBeSpace(const char sym)
+	bool CanBeSpace(const char sym)
 	{
 		return sym == ' ' || sym == '\n' || sym == '\t' || sym == '\r';
 	}
-	inline char MakeCharToNumber(const char sym)
+	char MakeCharToNumber(const char sym)
 	{
 		return CanBeNumber(sym) ? sym - '0' : 0;
 	}
-	inline bool CanBeLetter(const char sym)
+	bool CanBeLetter(const char sym)
 	{
 		return CanBeBigLetter(sym) || CanBeSmallLetter(sym);
 	}
-	inline char MakeLetterToNumber(const char sym)
+	char MakeLetterToNumber(const char sym)
 	{
 		if (CanBeSmallLetter(sym))
 			return sym - 'a';
@@ -37,7 +37,7 @@ namespace additional_string_lib
 			return sym - 'A';
 		else return 0;
 	}
-	inline std::string SeparateStr(std::string& str, size_t begin)
+	std::string SeparateStr(std::string& str, size_t begin)
 	{
 		size_t end = begin;
 		while (end < str.size())
@@ -46,9 +46,11 @@ namespace additional_string_lib
 				break;
 			end++;
 		}
-		return str.erase(begin, end);
+		std::string sub = str.substr(begin, end);
+		str.erase(begin, end);
+		return sub;
 	}
-	inline std::string ShiftStr(std::string& str, size_t begin)
+	std::string ShiftStr(std::string& str, size_t begin)
 	{
 		size_t end = begin;
 		while (end < str.size())
@@ -59,7 +61,7 @@ namespace additional_string_lib
 		}
 		return str.erase(begin, end - begin);
 	}
-	inline std::string SplitStr(std::string& str, size_t begin)
+	std::string SplitStr(std::string& str, size_t begin)
 	{
 		auto separated = SeparateStr(str, begin);
 		size_t end = begin;

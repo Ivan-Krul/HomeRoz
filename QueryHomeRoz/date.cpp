@@ -75,9 +75,9 @@ namespace query_home_roz
 
 	void date_week::Date::SetDay(short day)
 	{
-		if (mDay >= ConvertMonthDays(mMonth))
-			day = ConvertMonthDays(mMonth) - 1;
-		else if (mDay < 0)
+		if (day >= ConvertMonthDays(mMonth))
+			mDay = ConvertMonthDays(mMonth) - 1;
+		else if (day < 0)
 			mDay = 0;
 		else
 			mDay = day;

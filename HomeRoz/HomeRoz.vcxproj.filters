@@ -20,16 +20,5 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ext\Window.cpp">
-      <Filter>External Files\Window</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ext\Window.h">
-      <Filter>External Files\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\WindowsLib.h">
-      <Filter>External Files\Window</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,9 +1,13 @@
 #include "queryhomeroz.h"
 
+#include "additionalstringlib.h"
+
 namespace query_home_roz
 {
 	TokenIndex QueryHomeRoz::SearchToken_(std::string str) const
 	{
+		if(str.empty())
+			return TokenIndex::nothing;
 		for (size_t i = 0; i < cs_list_of_token_.size(); i++)
 			if (cs_list_of_token_[i] == str)
 				return static_cast<TokenIndex>(i);
@@ -14,14 +18,16 @@ namespace query_home_roz
 	{
 		auto separated = additional_string_lib::SplitStr(query); // SIZE OF ()
 		TokenIndex token_ind;
-
+		if((token_ind = SearchToken_(separated)) != TokenIndex::of)
+			return cs_invalid_token_msg;
+		separated = additional_string_lib::SplitStr(query);
 		switch (token_ind = SearchToken_(separated))
 		{
 			case TokenIndex::lesson:
 				return std::to_string(mgr_.SizeLessons());
 			case TokenIndex::homework:
 				separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
-				if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
+				if ((token_ind = SearchToken_(separated)) == TokenIndex::in)
 				{
 					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
 					size_t index = std::stoi(separated);
@@ -77,7 +83,7 @@ namespace query_home_roz
 				return cs_success_msg;
 			case TokenIndex::homework:
 				separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
-				if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
+				if ((token_ind = SearchToken_(separated)) == TokenIndex::in)
 				{
 					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
 					size_t index = std::stoi(separated);
@@ -103,14 +109,13 @@ namespace query_home_roz
 		switch (token_ind = SearchToken_(separated))
 		{
 			case TokenIndex::lesson:
-				separated = additional_string_lib::SplitStr(query);
-				mgr_.PopLesson(std::stoi(separated));
+				mgr_.PopLesson(SeparateNumber(query));
 				return cs_success_msg;
 			case TokenIndex::homework:
 				{
 					size_t indexH = SeparateNumber(query);
 					separated = additional_string_lib::SplitStr(query); // OF HOMEWORK ()
-					if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
+					if ((token_ind = SearchToken_(separated)) == TokenIndex::in)
 					{
 						mgr_.PopHomework(SeparateNumber(query), indexH); // OF HOMEWORK IN ...
 						return cs_success_msg;
@@ -135,11 +140,8 @@ namespace query_home_roz
 				{
 					size_t indexH = SeparateNumber(query); // OF HOMEWORK ()
 					separated = additional_string_lib::SplitStr(query);  // OF HOMEWORK ... ()
-					if ((token_ind = SearchToken_(separated)) == TokenIndex::size_of_in)
-					{
-						separated = additional_string_lib::SplitStr(query); // OF HOMEWORK IN ...
-						return OutputHomework_(*mgr_.GetHomework(std::stoi(separated), indexH));
-					}
+					if ((token_ind = SearchToken_(separated)) == TokenIndex::in)
+						return OutputHomework_(*mgr_.GetHomework(SeparateNumber(query), indexH)); // OF HOMEWORK IN ...
 					return cs_not_valid_token_msg;
 				}
 			default:
@@ -184,19 +186,14 @@ namespace query_home_roz
 				return cs_success_msg;
 			case query_home_roz::TokenIndex::set_week:
 				separated = additional_string_lib::SplitStr(query);
-				if (additional_string_lib::CanBeBigLetter(separated[0]))
+				if ((token_ind = SearchToken_(separated)) == TokenIndex::set_week_not)
 				{
 					// with NOT
 					separated = additional_string_lib::SplitStr(query);
-					if ((token_ind = SearchToken_(separated)) == TokenIndex::set_week_not)
-					{
-						separated = additional_string_lib::SplitStr(query);
-						auto week = ConvertToWeek_(separated);
-						auto iter = std::find(mgr_.GetLesson(indexL)->BeginWeeks(), mgr_.GetLesson(indexL)->EndWeeks(), week);
-						mgr_.GetLesson(indexL)->PopWeek(iter);
-						return cs_success_msg;
-					}
-					return cs_not_valid_token_msg;
+					auto week = ConvertToWeek_(separated);
+					auto iter = std::find(mgr_.GetLesson(indexL)->BeginWeeks(), mgr_.GetLesson(indexL)->EndWeeks(), week);
+					mgr_.GetLesson(indexL)->PopWeek(iter);
+					return cs_success_msg;
 				}
 				mgr_.GetLesson(indexL)->PushWeek(ConvertToWeek_(separated));
 				return cs_success_msg;
@@ -210,7 +207,8 @@ namespace query_home_roz
 		size_t indexH = SeparateNumber(query); // SET HOMEWORK ()
 		auto separated = additional_string_lib::SplitStr(query); // SET HOMEWORK [] ()
 		TokenIndex token_ind = SearchToken_(separated); // No changes there
-		if (SearchToken_(separated) != TokenIndex::size_of_in) // SET HOMEWORK [] {} ()
+		separated = additional_string_lib::SplitStr(query);
+		if (SearchToken_(separated) != TokenIndex::in) // SET HOMEWORK [] {} ()
 			return cs_not_valid_token_msg;
 		size_t indexL = SeparateNumber(query); // SET HOMEWORK [] {} IN ()
 		separated = additional_string_lib::SplitStr(query);
@@ -223,8 +221,9 @@ namespace query_home_roz
 				{
 					token_ind = SearchToken_(separated);
 					date_week::Date d;
-					d.SetDay(std::stoi(additional_string_lib::SplitStr(query)));
+					separated = additional_string_lib::SplitStr(query);
 					d.SetMonth(std::stoi(additional_string_lib::SplitStr(query)));
+					d.SetDay(std::stoi(separated));
 					switch (token_ind)
 					{
 						case TokenIndex::set_date_creation:
@@ -234,32 +233,53 @@ namespace query_home_roz
 							mgr_.SetHomeworkDateTo(indexL, indexH, d);
 							return cs_success_msg;
 						default:
-							return cs_not_valid_token_msg;
+							return cs_not_valid_token_msg 
+								+ ": " + cs_list_of_token_[size_t(TokenIndex::set)] 
+								+ " "
+								+ cs_list_of_token_[size_t(TokenIndex::homework)]
+								+ " [homework index] "
+								+ cs_list_of_token_[size_t(TokenIndex::set_date)]
+								+ " "
+								+ cs_list_of_token_[size_t(TokenIndex::in)]
+								+ " [lesson index] (" 
+								+ cs_list_of_token_[size_t(TokenIndex::set_date_creation)]
+								+ " | "
+								+ cs_list_of_token_[size_t(TokenIndex::set_date_term)]
+								+ ")";
 					}
 				}
 			case TokenIndex::set_done:
 				mgr_.SetHomeworkDone(indexL, indexH, separated == "true");
 				return cs_success_msg;
 			default:
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg
+					+ ": " + cs_list_of_token_[size_t(TokenIndex::set)]
+					+ " "
+					+ cs_list_of_token_[size_t(TokenIndex::homework)]
+					+ " [homework index] ("
+					+ cs_list_of_token_[size_t(TokenIndex::set_context)]
+					+ " | "
+					+ cs_list_of_token_[size_t(TokenIndex::set_date)]
+					+ " | "
+					+ cs_list_of_token_[size_t(TokenIndex::set_done)]
+					+ ")";
 		}
 	}
 
 	std::string QueryHomeRoz::Query(std::string& query)
 	{
-		static std::string output;
-		static auto separated = additional_string_lib::SplitStr(query);
-		static TokenIndex token_ind;
+		auto separated = additional_string_lib::SplitStr(query);
+		TokenIndex token_ind;
 		try
 		{
 			if (!size_t(token_ind = SearchToken_(separated)))
 				return cs_invalid_token_msg;
 			switch (token_ind)
 			{
-				case TokenIndex::size_of:
+				case TokenIndex::size:
 					return ExecuteSizeOf_(query);
 				case TokenIndex::output:
-					ExecuteOutput_(query);
+					return ExecuteOutput_(query);
 				case TokenIndex::set:
 					separated = additional_string_lib::SplitStr(query); // SET ()
 					if ((token_ind = SearchToken_(separated)) == TokenIndex::lesson)
@@ -276,13 +296,28 @@ namespace query_home_roz
 				case TokenIndex::erase:
 					return ExecuteErase_(query);
 				default:
-					return cs_not_valid_token_msg;
+					return cs_not_valid_token_msg
+						+ "("
+						+ cs_list_of_token_[size_t(TokenIndex::size)]
+						+ " | "
+						+ cs_list_of_token_[size_t(TokenIndex::output)]
+						+ " | "
+						+ cs_list_of_token_[size_t(TokenIndex::set)]
+						+ " | "
+						+ cs_list_of_token_[size_t(TokenIndex::clear)]
+						+ " | "
+						+ cs_list_of_token_[size_t(TokenIndex::create)]
+						+ " | "
+						+ cs_list_of_token_[size_t(TokenIndex::erase)]
+						+ ")";
 			}
 			return cs_nothing_msg;
 		}
-		catch (...) 
+		catch (std::exception exc) 
 		{
-			return cs_exception_msg;
+			std::string msg = cs_exception_msg;
+			msg += ": ";
+			return msg + exc.what();
 		}		
 	}
 }

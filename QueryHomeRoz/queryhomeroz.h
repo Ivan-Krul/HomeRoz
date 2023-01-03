@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "homemgr.h"
-#include "additionalstringlib.h"
 
 namespace query_home_roz
 {
@@ -11,12 +10,37 @@ namespace query_home_roz
 
 	class QueryHomeRoz
 	{
-		const static std::vector<std::string> cs_list_of_token_;
-		const static std::string cs_not_valid_token_msg;
-		const static std::string cs_invalid_token_msg;
-		const static std::string cs_success_msg;
-		const static std::string cs_nothing_msg;
-		const static std::string cs_exception_msg;
+		const std::vector<std::string> cs_list_of_token_ = {
+			// Definitions
+			"NOTHING",
+			"LESSON",
+			"HOMEWORK",
+			// Size
+			"SIZE", // () -> LESSON | HOMEWORK
+			"IN", // SIZE OF HOMEWORK -> () -> lesson_name
+			// Get
+			"OUTPUT", // () -> LESSON | HOMEWORK
+			// Set something
+			"SET", // () -> LESSON | HOMEWORK
+			"NAME", // SET LESSON lesson_name -> () -> ...
+			"LINK",
+			"WEEK", // SET LESSON lesson_name -> () -> NOT | week (3 letters)
+			"NOT",
+			"CONTEXT",
+			"DATE",
+			"CREATION",
+			"TERM TO",
+			"DONE",
+			"CLEAR",
+			"CREATE",
+			"ERASE",
+			"OF"
+		};
+		const std::string cs_not_valid_token_msg = "QUERY TOKEN EXIST BUT NOT VALID";
+		const std::string cs_invalid_token_msg = "INVALID QUERY TOKEN";
+		const std::string cs_success_msg = "SUCCESS";
+		const std::string cs_nothing_msg = "NOTHING";
+		const std::string cs_exception_msg = "EXCEPTION";
 	private:
 		HomeMGR mgr_;
 	private:
@@ -41,8 +65,8 @@ namespace query_home_roz
 		nothing = 0,
 		lesson,
 		homework,
-		size_of,
-		size_of_in,
+		size,
+		in,
 		output,
 		set,
 		set_name,
@@ -56,40 +80,8 @@ namespace query_home_roz
 		set_done,
 		clear,
 		create,
-		erase
-	};
-
-	const std::string QueryHomeRoz::cs_not_valid_token_msg = "QUERY TOKEN EXIST BUT NOT VALID";
-	const std::string QueryHomeRoz::cs_invalid_token_msg = "INVALID QUERY TOKEN";
-	const std::string QueryHomeRoz::cs_success_msg = "SUCCESS";
-	const std::string QueryHomeRoz::cs_nothing_msg = "NOTHING";
-	const std::string QueryHomeRoz::cs_exception_msg = "EXCEPTION";
-
-	const std::vector<std::string> QueryHomeRoz::cs_list_of_token_ =
-	{
-		// Definitions
-		"NOTHING",
-		"LESSON",
-		"HOMEWORK",
-		// Size
-		"SIZE OF", // () -> LESSON | HOMEWORK
-		"IN", // SIZE OF HOMEWORK -> () -> lesson_name
-		// Get
-		"OUTPUT", // () -> LESSON | HOMEWORK
-		// Set something
-		"SET", // () -> LESSON | HOMEWORK
-		"NAME", // SET LESSON lesson_name -> () -> ...
-		"LINK",
-		"WEEK", // SET LESSON lesson_name -> () -> NOT | week (3 letters)
-		"NOT",
-		"CONTEXT",
-		"DATE",
-		"CREATION",
-		"TERM TO",
-		"DONE",
-		"CLEAR",
-		"CREATE",
-		"ERASE"
+		erase,
+		of
 	};
 }
 
