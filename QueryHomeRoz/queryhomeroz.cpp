@@ -287,7 +287,14 @@ namespace query_home_roz
 					else if ((token_ind = SearchToken_(separated)) == TokenIndex::homework)
 						return ExecuteSetHomework_(query);
 					else
-						return cs_not_valid_token_msg;
+						return cs_not_valid_token_msg
+						+ ": "
+						+ cs_list_of_token_[size_t(TokenIndex::set)]
+						+ " ("
+						+ cs_list_of_token_[size_t(TokenIndex::lesson)]
+						+ " | "
+						+ cs_list_of_token_[size_t(TokenIndex::homework)]
+						+ ")";
 				case TokenIndex::clear:
 					mgr_.Clear();
 					return cs_success_msg;
@@ -297,7 +304,7 @@ namespace query_home_roz
 					return ExecuteErase_(query);
 				default:
 					return cs_not_valid_token_msg
-						+ "("
+						+ ": ("
 						+ cs_list_of_token_[size_t(TokenIndex::size)]
 						+ " | "
 						+ cs_list_of_token_[size_t(TokenIndex::output)]
