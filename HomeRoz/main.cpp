@@ -9,7 +9,7 @@ int main()
 	std::string q;
 	while (true)
 	{
-|		std::cout << "#: ";
+		std::cout << "#: ";
 		std::getline(std::cin, q);
 		if (q == "EXIT")
 			break;

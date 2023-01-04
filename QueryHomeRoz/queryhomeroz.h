@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "homemgr.h"
 
@@ -34,21 +35,26 @@ namespace query_home_roz
 			"CLEAR",
 			"CREATE",
 			"ERASE",
-			"OF"
+			"OF",
+			"SAVE",
+			"LOAD"
 		};
-		const std::string cs_not_valid_token_msg = "QUERY TOKEN EXIST BUT NOT VALID";
-		const std::string cs_invalid_token_msg = "INVALID QUERY TOKEN";
-		const std::string cs_success_msg = "SUCCESS";
-		const std::string cs_nothing_msg = "NOTHING";
-		const std::string cs_exception_msg = "EXCEPTION";
+		const std::string cs_not_valid_token_msg = "query token exist but not valid";
+		const std::string cs_invalid_token_msg = "invalid query token";
+		const std::string cs_success_msg = "success";
+		const std::string cs_nothing_msg = "nothing";
+		const std::string cs_exception_msg = "exception";
 	private:
 		HomeMGR mgr_;
 	private:
 		TokenIndex SearchToken_(std::string str) const;
-		std::string OutputLesson_(Lesson lesson);
+		std::string OutputLesson_(Lesson& lesson);
 		std::string OutputHomework_(Homework hw);
 		date_week::Week ConvertToWeek_(std::string str);
 		size_t SeparateNumber(std::string& query);
+		void WriteBinaryString(const std::string& str, std::ofstream& fs);
+		std::string ReadBinaryString(std::ifstream& fs);
+		size_t ReadBinarySize(std::ifstream& fs);
 	private:
 		std::string ExecuteSizeOf_(std::string& query);
 		std::string ExecuteCreate_(std::string& query);
@@ -56,8 +62,10 @@ namespace query_home_roz
 		std::string ExecuteOutput_(std::string& query);
 		std::string ExecuteSetLesson_(std::string& query);
 		std::string ExecuteSetHomework_(std::string& query);
+		std::string ExecuteSave_(std::string& query);
+		std::string ExecuteLoad_(std::string& query);
 	public:
-		std::string Query(std::string& query);
+		const std::string Query(std::string query);
 	};
 
 	enum class TokenIndex
@@ -81,7 +89,9 @@ namespace query_home_roz
 		clear,
 		create,
 		erase,
-		of
+		of,
+		save,
+		load
 	};
 }
 

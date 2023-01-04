@@ -29,6 +29,9 @@
     <ClCompile Include="queryhomeroz.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="queryfilemodule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="week.h">

@@ -18,42 +18,42 @@ namespace query_home_roz
 		return weeks_.end();
 	}
 
-	size_t Lesson::SizeWeek()
+	size_t Lesson::SizeWeek() const
 	{
 		return weeks_.size();
 	}
 
 	date_week::Week& Lesson::GetWeek(size_t index)
 	{
-		return weeks_[index];
+		return weeks_.at(index);
 	}
 
-	std::string Lesson::GetName()
+	const std::string& Lesson::GetName() const
 	{
 		return name_;
 	}
 
-	std::string Lesson::GetLink()
+	const std::string& Lesson::GetLink() const
 	{
 		return link_;
 	}
 
-	void Lesson::SetName(std::string name)
+	void Lesson::SetName(const std::string name)
 	{
 		name_ = name;
 	}
 
-	void Lesson::SetLink(std::string link)
+	void Lesson::SetLink(const std::string link)
 	{
 		link_ = link;
 	}
 
-	void Lesson::PushWeek(date_week::Week week)
+	void Lesson::PushWeek(const date_week::Week week)
 	{
 		weeks_.push_back(week);
 	}
 
-	void Lesson::PopWeek(std::vector<date_week::Week>::iterator iter)
+	void Lesson::PopWeek(const std::vector<date_week::Week>::iterator iter)
 	{
 		weeks_.erase(iter);
 	}

@@ -33,13 +33,13 @@ namespace query_home_roz
 					size_t index = std::stoi(separated);
 					return std::to_string(mgr_.SizeHomeworks(index));
 				}
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": SIZE OF HOMEWORK (IN) [lesson index]";
 			default:
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": SIZE OF (LESSON | HOMEWORK)";
 		}
 	}
 
-	std::string QueryHomeRoz::OutputLesson_(Lesson lesson)
+	std::string QueryHomeRoz::OutputLesson_(Lesson& lesson)
 	{
 		auto out = lesson.GetName();
 		out += '\t';
@@ -90,9 +90,9 @@ namespace query_home_roz
 					mgr_.PushHomework(index);
 					return cs_success_msg;
 				}
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": CREATE HOMEWORK (IN) [lesson index]";
 			default:
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": CREATE (LESSON | HOMEWORK)";
 		}
 		return cs_success_msg;
 	}
@@ -120,10 +120,10 @@ namespace query_home_roz
 						mgr_.PopHomework(SeparateNumber(query), indexH); // OF HOMEWORK IN ...
 						return cs_success_msg;
 					}
-					return cs_not_valid_token_msg;
+					return cs_not_valid_token_msg + ": ERASE HOMEWORK [homework index] (IN) [lesson index]";
 				}
 			default:
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": ERASE (LESSON | HOMEWORK)";
 		}
 		return cs_success_msg;
 	}
@@ -142,10 +142,10 @@ namespace query_home_roz
 					separated = additional_string_lib::SplitStr(query);  // OF HOMEWORK ... ()
 					if ((token_ind = SearchToken_(separated)) == TokenIndex::in)
 						return OutputHomework_(*mgr_.GetHomework(SeparateNumber(query), indexH)); // OF HOMEWORK IN ...
-					return cs_not_valid_token_msg;
+					return cs_not_valid_token_msg + ": OUTPUT HOMEWORK [homework index] (IN) [lesson index]";
 				}
 			default:
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": OUTPUT (LESSON | HOMEWORK)";
 		}
 	}
 
@@ -173,32 +173,30 @@ namespace query_home_roz
 	{
 		TokenIndex token_ind;
 		size_t indexL = SeparateNumber(query);
-		auto separated = additional_string_lib::SplitStr(query);
-		switch (token_ind = SearchToken_(separated))
+		switch (token_ind = SearchToken_(additional_string_lib::SplitStr(query)))
 		{
 			case query_home_roz::TokenIndex::set_name:
-				separated = additional_string_lib::SplitStr(query);
-				mgr_.SetLessonName(indexL, separated);
+				mgr_.SetLessonName(indexL, additional_string_lib::SplitStr(query));
 				return cs_success_msg;
 			case query_home_roz::TokenIndex::set_link:
-				separated = additional_string_lib::SplitStr(query);
-				mgr_.SetLessonLink(indexL, separated);
+				mgr_.SetLessonLink(indexL, additional_string_lib::SplitStr(query));
 				return cs_success_msg;
 			case query_home_roz::TokenIndex::set_week:
-				separated = additional_string_lib::SplitStr(query);
-				if ((token_ind = SearchToken_(separated)) == TokenIndex::set_week_not)
 				{
-					// with NOT
-					separated = additional_string_lib::SplitStr(query);
-					auto week = ConvertToWeek_(separated);
-					auto iter = std::find(mgr_.GetLesson(indexL)->BeginWeeks(), mgr_.GetLesson(indexL)->EndWeeks(), week);
-					mgr_.GetLesson(indexL)->PopWeek(iter);
+					auto separated = additional_string_lib::SplitStr(query);
+					if ((token_ind = SearchToken_(separated)) == TokenIndex::set_week_not)
+					{
+						// with NOT
+						auto week = ConvertToWeek_(additional_string_lib::SplitStr(query));
+						auto iter = std::find(mgr_.GetLesson(indexL)->BeginWeeks(), mgr_.GetLesson(indexL)->EndWeeks(), week);
+						mgr_.GetLesson(indexL)->PopWeek(iter);
+						return cs_success_msg;
+					}
+					mgr_.GetLesson(indexL)->PushWeek(ConvertToWeek_(separated));
 					return cs_success_msg;
 				}
-				mgr_.GetLesson(indexL)->PushWeek(ConvertToWeek_(separated));
-				return cs_success_msg;
 			default:
-				return cs_not_valid_token_msg;
+				return cs_not_valid_token_msg + ": SET LESSON [lesson index] (NAME | LINK | WEEK)";
 		}
 	}
 
@@ -233,46 +231,23 @@ namespace query_home_roz
 							mgr_.SetHomeworkDateTo(indexL, indexH, d);
 							return cs_success_msg;
 						default:
-							return cs_not_valid_token_msg 
-								+ ": " + cs_list_of_token_[size_t(TokenIndex::set)] 
-								+ " "
-								+ cs_list_of_token_[size_t(TokenIndex::homework)]
-								+ " [homework index] "
-								+ cs_list_of_token_[size_t(TokenIndex::set_date)]
-								+ " "
-								+ cs_list_of_token_[size_t(TokenIndex::in)]
-								+ " [lesson index] (" 
-								+ cs_list_of_token_[size_t(TokenIndex::set_date_creation)]
-								+ " | "
-								+ cs_list_of_token_[size_t(TokenIndex::set_date_term)]
-								+ ")";
+							return cs_not_valid_token_msg + ": SET HOMEWORK [homework index] DATE IN [lesson index] (CREATION | TERM) [day] [month(in number)]";
 					}
 				}
 			case TokenIndex::set_done:
 				mgr_.SetHomeworkDone(indexL, indexH, separated == "true");
 				return cs_success_msg;
 			default:
-				return cs_not_valid_token_msg
-					+ ": " + cs_list_of_token_[size_t(TokenIndex::set)]
-					+ " "
-					+ cs_list_of_token_[size_t(TokenIndex::homework)]
-					+ " [homework index] ("
-					+ cs_list_of_token_[size_t(TokenIndex::set_context)]
-					+ " | "
-					+ cs_list_of_token_[size_t(TokenIndex::set_date)]
-					+ " | "
-					+ cs_list_of_token_[size_t(TokenIndex::set_done)]
-					+ ")";
+				return cs_not_valid_token_msg + ": SET HOMEWORK [homework index] (CONTEXT | DATE | DONE) IN [lesson index] [value]";
 		}
 	}
 
-	std::string QueryHomeRoz::Query(std::string& query)
+	const std::string QueryHomeRoz::Query(std::string query)
 	{
-		auto separated = additional_string_lib::SplitStr(query);
 		TokenIndex token_ind;
 		try
 		{
-			if (!size_t(token_ind = SearchToken_(separated)))
+			if (!size_t(token_ind = SearchToken_(additional_string_lib::SplitStr(query))))
 				return cs_invalid_token_msg;
 			switch (token_ind)
 			{
@@ -281,20 +256,12 @@ namespace query_home_roz
 				case TokenIndex::output:
 					return ExecuteOutput_(query);
 				case TokenIndex::set:
-					separated = additional_string_lib::SplitStr(query); // SET ()
-					if ((token_ind = SearchToken_(separated)) == TokenIndex::lesson)
+					if ((token_ind = SearchToken_(additional_string_lib::SplitStr(query))) == TokenIndex::lesson)
 						return ExecuteSetLesson_(query);
-					else if ((token_ind = SearchToken_(separated)) == TokenIndex::homework)
+					else if ((token_ind = SearchToken_(additional_string_lib::SplitStr(query))) == TokenIndex::homework)
 						return ExecuteSetHomework_(query);
 					else
-						return cs_not_valid_token_msg
-						+ ": "
-						+ cs_list_of_token_[size_t(TokenIndex::set)]
-						+ " ("
-						+ cs_list_of_token_[size_t(TokenIndex::lesson)]
-						+ " | "
-						+ cs_list_of_token_[size_t(TokenIndex::homework)]
-						+ ")";
+						return cs_not_valid_token_msg + ": SET (LESSON | HOMEWORK)";
 				case TokenIndex::clear:
 					mgr_.Clear();
 					return cs_success_msg;
@@ -302,29 +269,18 @@ namespace query_home_roz
 					return ExecuteCreate_(query);
 				case TokenIndex::erase:
 					return ExecuteErase_(query);
+				case TokenIndex::save:
+					return ExecuteSave_(query);
+				case TokenIndex::load:
+					return ExecuteLoad_(query);
 				default:
-					return cs_not_valid_token_msg
-						+ ": ("
-						+ cs_list_of_token_[size_t(TokenIndex::size)]
-						+ " | "
-						+ cs_list_of_token_[size_t(TokenIndex::output)]
-						+ " | "
-						+ cs_list_of_token_[size_t(TokenIndex::set)]
-						+ " | "
-						+ cs_list_of_token_[size_t(TokenIndex::clear)]
-						+ " | "
-						+ cs_list_of_token_[size_t(TokenIndex::create)]
-						+ " | "
-						+ cs_list_of_token_[size_t(TokenIndex::erase)]
-						+ ")";
+					return cs_not_valid_token_msg + ":  (SIZE | OUTPUT | SET | CLEAR | CREATE | ERASE | SAVE | LOAD)";
 			}
 			return cs_nothing_msg;
 		}
-		catch (std::exception exc) 
+		catch (const std::exception& exc) 
 		{
-			std::string msg = cs_exception_msg;
-			msg += ": ";
-			return msg + exc.what();
+			return cs_exception_msg + ": " + exc.what();
 		}		
 	}
 }

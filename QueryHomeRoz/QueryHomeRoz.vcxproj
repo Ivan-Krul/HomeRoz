@@ -23,6 +23,7 @@
     <ClCompile Include="homemgr.cpp" />
     <ClCompile Include="homework.cpp" />
     <ClCompile Include="lesson.cpp" />
+    <ClCompile Include="queryfilemodule.cpp" />
     <ClCompile Include="queryhomeroz.cpp" />
   </ItemGroup>
   <ItemGroup>
