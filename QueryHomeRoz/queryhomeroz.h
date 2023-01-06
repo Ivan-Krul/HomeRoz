@@ -53,8 +53,7 @@ namespace query_home_roz
 		date_week::Week ConvertToWeek_(std::string str);
 		size_t SeparateNumber(std::string& query);
 		void WriteBinaryString(const std::string& str, std::ofstream& fs);
-		std::string ReadBinaryString(std::ifstream& fs);
-		size_t ReadBinarySize(std::ifstream& fs);
+		std::string ReadBinaryString(const size_t size, std::ifstream& fs);
 	private:
 		std::string ExecuteSizeOf_(std::string& query);
 		std::string ExecuteCreate_(std::string& query);

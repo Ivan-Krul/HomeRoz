@@ -258,7 +258,7 @@ namespace query_home_roz
 				case TokenIndex::set:
 					if ((token_ind = SearchToken_(additional_string_lib::SplitStr(query))) == TokenIndex::lesson)
 						return ExecuteSetLesson_(query);
-					else if ((token_ind = SearchToken_(additional_string_lib::SplitStr(query))) == TokenIndex::homework)
+					else if (token_ind == TokenIndex::homework)
 						return ExecuteSetHomework_(query);
 					else
 						return cs_not_valid_token_msg + ": SET (LESSON | HOMEWORK)";
