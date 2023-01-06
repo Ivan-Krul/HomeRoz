@@ -13,7 +13,6 @@ int main()
 		std::getline(std::cin, q);
 		if (q == "EXIT")
 			break;
-		std::cout << query.Query(q) << '\n';
 	}
 	return 0;
 }
